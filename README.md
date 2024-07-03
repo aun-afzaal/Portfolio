@@ -2,7 +2,7 @@
 
 A simple portfolio starter theme built with Vue.js v3, Composition API and Tailwind CSS v3.
 
-![Vuejs-TailwindCSS-Portfolio](https://user-images.githubusercontent.com/16396664/140909796-815239e4-a986-46ad-bbd0-4b166127bbb8.JPG)
+(https://aun.vercel.app/img/developer.d30886eb.svg)
 
 
 ## Features
