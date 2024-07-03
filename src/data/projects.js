@@ -10,25 +10,35 @@ const projects = [
 	},
 	{
 		id: 2,
-		title: 'Twiiter Auto Comment',
+		title: 'Twitter Auto Comment',
 		category: 'Chrome Extension',
-		img: require('@/assets/images/twitterExt.jpg'),
+		img: require('@/assets/images/twitterExt.jpeg'),
 	},
 	{
 		id: 3,
 		title: 'Raap Builder',
 		category: 'UI/UX Design',
-		img: require('@/assets/images/raap-builder.jpg'),
+		img: require('@/assets/images/raap-builder.jpeg'),
 	},
 	{
 		id: 4,
 		title: 'PitchLane',
 		category: 'Web Application',
-		img: require('@/assets/images/pitchlane.jpg'),
+		img: require('@/assets/images/pitchlane.jpeg'),
 	},
 	{
 		id: 5,
-		title: 'Honest Property',
+		title: 'TrumeID',
+		category: 'Web Application',
+		img: require('@/assets/images/trumeid.png'),
+	},{
+		id: 5,
+		title: 'Landing Team',
+		category: 'UI/UX Design',
+		img: require('@/assets/images/honest-property.jpg'),
+	},{
+		id: 5,
+		title: 'GLASS Calculator',
 		category: 'Web Application',
 		img: require('@/assets/images/honest-property.jpg'),
 	},
@@ -36,7 +46,7 @@ const projects = [
 		id: 6,
 		title: 'ERP Next',
 		category: 'CMS',
-		img: require('@/assets/images/erp-next.jpg'),
+		img: require('@/assets/images/erp-next.png'),
 	},
 ];
 

@@ -3,7 +3,7 @@ export const socialLinks = [
 		id: 1,
 		name: 'Website',
 		icon: 'globe',
-		url: 'https://www.aun.me/',
+		url: 'https://aun.vercel.app/',
 	},
 	{
 		id: 2,
