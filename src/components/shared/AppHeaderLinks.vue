@@ -28,7 +28,7 @@ export default {
 			aria-label="Contact"
 			>Contact</router-link
 		>
-		<div
+		<!-- <div
 			class="border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark"
 		>
 			<button
@@ -38,7 +38,7 @@ export default {
 			>
 				Hire Me
 			</button>
-		</div>
+		</div> -->
 	</div>
 </template>
 
