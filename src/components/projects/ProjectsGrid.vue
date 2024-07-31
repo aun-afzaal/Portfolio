@@ -78,17 +78,18 @@ export default {
 				class="
 					flex
 					justify-between
+					md:flex-row
+					flex-col
 					border-b border-primary-light
 					dark:border-secondary-dark
 					pb-3
 					gap-2
 				"
 			>
-				<div class="flex justify-between gap-2">
+				<div class="flex gap-2">
 					<span
 						class="
-							hidden
-							sm:block
+							block
 							bg-primary-light
 							dark:bg-ternary-dark
 							p-2.5
@@ -108,6 +109,7 @@ export default {
 						pl-3
 						pr-1
 						sm:px-4
+						w-[100%]
 						py-2
 						border-1 border-gray-200
 						dark:border-secondary-dark
