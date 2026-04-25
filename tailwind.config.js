@@ -1,36 +1,50 @@
-const colors = require('tailwindcss/colors');
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: [
-		'./src/**/*.vue',
-		'./src/**/*.js',
-		'./src/**/*.jsx',
-		'./src/**/*.html',
-		'./src/**/*.md'
-	],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
 
-	darkMode: 'class',
-	theme: {
-		extend: {
-			colors: {
-				'primary-light': '#F7F8FC',
-				'secondary-light': '#FFFFFF',
-				'ternary-light': '#f6f7f8',
-
-				'primary-dark': '#0D2438',
-				'secondary-dark': '#102D44',
-				'ternary-dark': '#1E3851',
-			},
-			container: {
-				padding: {
-					DEFAULT: '1rem',
-					sm: '2rem',
-					lg: '5rem',
-					xl: '6rem',
-					'2xl': '8rem',
-				},
-			},
-		},
-	},
-	plugins: [require('@tailwindcss/forms')],
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    container: {
+      padding: {
+        DEFAULT: "15px",
+      },
+    },
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "960px",
+      xl: "1200px",
+    },
+    extend: {
+      colors: {
+        primary: "#131424",
+        secondary: "#393A47",
+        accent: "#F13024",
+      },
+      backgroundImage: {
+        explosion: 'url("/bg-explosion.png")',
+        circles: 'url("/bg-circles.png")',
+        circleStar: 'url("/circle-star.svg")',
+        site: 'url("/site-bg.svg")',
+      },
+      animation: {
+        "spin-slow": "spin 6s linear infinite",
+      },
+      fontFamily: {
+        poppins: [`var(--font-poppins)`, "sans-serif"],
+        sora: [`var(--font-sora)`, "sans-serif"],
+      },
+    },
+  },
+  container: {
+    padding: {
+      DEFAULT: "15px",
+    },
+  },
+  plugins: [require("tailwind-scrollbar")],
 };
