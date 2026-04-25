@@ -28,6 +28,7 @@ const Layout = ({ children }) => {
           name="keywords"
           content="react, next, nextjs, html, css, javascript, js, modern-ui, modern-ux, portfolio, framer-motion, 3d-website, particle-effect"
         />
+        <meta name="google-site-verification" content="DoPaRlA8gAeXq5hyUwDX3i0nOqhGl59jZfJ6z0-sm70" />
         <meta name="author" content="Muhammad Aun Afzaal" />
         <meta name="theme-color" content="#f13024" />
       </Head>
