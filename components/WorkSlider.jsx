@@ -35,6 +35,7 @@ const workSlides = {
         },
       ],
     },
+
     {
       images: [
         {
@@ -43,9 +44,9 @@ const workSlides = {
           link: "/projects/assistmein",
         },
         {
-          title: "UsaLottomax System",
-          path: "https://www.abcodify.com/images/usalottomax.png",
-          link: "/projects/usalottomax",
+          title: "Discord Bot System",
+          path: "",
+          link: "/projects/discord-bot",
         },
         {
           title: "AI SEO System",
@@ -56,6 +57,81 @@ const workSlides = {
           title: "Order App",
           path: "https://www.abcodify.com/images/order-app.png",
           link: "/projects/order-app",
+        },
+      ],
+    },
+
+    {
+      images: [
+        {
+          title: "Trumeid Dashboard",
+          path: "https://www.abcodify.com/images/trumeid-dashboard.png",
+          link: "/projects/trumeid-dashboard",
+        },
+        {
+          title: "Invoice Management System",
+          path: "",
+          link: "/projects/invoice",
+        },
+        {
+          title: "Lottomax Admin Panel",
+          path: "https://www.abcodify.com/images/usalottomax-admin.png",
+          link: "/projects/usalottomax-admin",
+        },
+        {
+          title: "Ice Cream Inventory",
+          path: "https://www.abcodify.com/images/icecream.png",
+          link: "/projects/icecream",
+        },
+      ],
+    },
+
+    {
+      images: [
+        {
+          title: "UsaLottomax System",
+          path: "https://www.abcodify.com/images/usalottomax.png",
+          link: "/projects/usalottomax",
+        },
+        {
+          title: "Pitchlane Platform",
+          path: "https://www.abcodify.com/images/pitchlane.png",
+          link: "/projects/pitchlane",
+        },
+        {
+          title: "Admin AqarLink",
+          path: "https://www.abcodify.com/images/admin-aqarlink.png",
+          link: "/projects/admin-aqarlink",
+        },
+        {
+          title: "Raap Builder",
+          path: "",
+          link: "/projects/raap-builder",
+        },
+      ],
+    },
+
+    {
+      images: [
+        {
+          title: "Motorcycle Stand System",
+          path: "https://www.abcodify.com/images/madina-stand.png",
+          link: "/projects/madina-stand",
+        },
+        {
+          title: "Portfolio System",
+          path: "https://www.abcodify.com/images/portfolio.png",
+          link: "/projects/portfolio",
+        },
+        {
+          title: "Glass Calculator",
+          path: "",
+          link: "/projects/glass-calc",
+        },
+        {
+          title: "UsaLottomax Full",
+          path: "https://www.abcodify.com/images/usalottomax.png",
+          link: "/projects/usalottomax",
         },
       ],
     },
@@ -72,14 +148,14 @@ const WorkSlider = () => {
         slidesPerView={1}
         loop={true}
         autoplay={{
-          delay: 5000,
+          delay: 50000,
           disableOnInteraction: false,
         }}
         pagination={{
           clickable: true,
         }}
         grabCursor={true}
-        className="w-full h-[520px] sm:h-[560px]"
+        className="w-full sm:h-[520px] h-full"
       >
         {workSlides.slides.map((slide, i) => (
           <SwiperSlide key={i}>
@@ -92,10 +168,10 @@ const WorkSlider = () => {
                 >
                   {/* IMAGE */}
                   <Image
-                    src={image.path}
+                    src={image.path ? image.path: "/no-image.png"}
                     alt={image.title}
                     fill
-                    className="object-cover"
+                    className={`${image.path ? "object-cover" : "border border-[#4a22bd] rounded-lg"}`}
                   />
 
                   {/* OVERLAY */}
