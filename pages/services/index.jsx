@@ -41,7 +41,7 @@ export const serviceData = [
 
 const Services = () => {
   return (
-    <div className="h-[100vh] bg-primary/30 xl:py-36 py-20 flex items-center relative">
+    <div className="h-[100vh] bg-primary/30 xl:py-36 py-20 flex items-center w-full relative">
       <Circles />
       <Bulb />
 

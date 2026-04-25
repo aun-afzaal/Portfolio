@@ -872,7 +872,7 @@ export default function ProjectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-primary/30 py-20 xl:py-36 text-center xl:text-left relative overflow-auto h-6">
+    <div className="min-h-screen w-full bg-primary/30 py-20 xl:py-36 text-center xl:text-left relative overflow-auto h-6">
       
       {/* Avatar */}
       <motion.div

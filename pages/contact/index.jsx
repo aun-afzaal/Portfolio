@@ -62,7 +62,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="h-[100vh] bg-primary/30">
+    <div className="h-[100vh] w-full bg-primary/30">
       <div className="container mx-auto xl:py-36 py-20 flex items-center justify-center h-full">
 
         <div className="w-full max-w-[700px] mb-14 md:mb-0">

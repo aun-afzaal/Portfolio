@@ -4,7 +4,7 @@ import Image from "next/image";
 import {
   RiInstagramLine,
   RiFacebookLine,
-  RiTwitterLine,
+  RiTwitterXLine,
   RiGithubLine,
   RiLinkedinLine,
 } from "react-icons/ri";
@@ -25,7 +25,7 @@ export const socialData = [
   {
     name: "Twitter (X)",
     link: "https://www.x.com/AunAfzaal",
-    Icon: RiTwitterLine,
+    Icon: RiTwitterXLine,
     bg: "bg-black hover:bg-neutral-900",
   },
   {
