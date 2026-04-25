@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://aun.abcodify.com
+
+# Sitemaps
+Sitemap: https://aun.abcodify.com/sitemap.xml
