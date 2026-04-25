@@ -11,7 +11,7 @@ const Home = () => {
     <div className="bg-primary/60 h-full">
       {/* text */}
       <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
-        <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto max-w-[950px] xl:mr-auto">
+        <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto xl:mr-auto">
           {/* title */}
           <motion.h1
             variants={fadeIn("down", 0.2)}
@@ -20,7 +20,7 @@ const Home = () => {
             exit="hidden"
             className="h1 xl:text-[56px] leading-tight"
           >
-            Muhammad Aun <br /> Builds{" "}
+            Building <br />
             <span className="text-accent">Modern Web Experiences</span>
           </motion.h1>
 
@@ -30,14 +30,22 @@ const Home = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-[500px] mx-auto xl:mx-0 mb-10 xl:mb-16"
+            className="max-w-s xl:max-w-[600px] mx-auto xl:mx-0 mb-10 xl:mb-12"
           >
-            I am Muhammad Aun, a web and mobile developer specializing in
-            React, Next.js, and Python development. I build fast, scalable,
-            and SEO-friendly web applications that help businesses grow
-            online. From modern UI/UX design to full-stack development, I
-            deliver high-performance digital solutions tailored to real-world
-            needs.
+            I am Muhammad Aun, a passionate Web and Mobile Application Developer
+            specializing in building modern, high-performance digital experiences
+            using React.js, Next.js, and Python.
+
+            I focus on creating fast, scalable, and SEO-optimized web applications
+            that help businesses grow online and improve user engagement.
+
+            My expertise includes frontend development, backend API integration,
+            UI/UX design, and full-stack web solutions. I build responsive websites,
+            dashboards, SaaS platforms, and mobile-friendly applications with clean,
+            maintainable code and modern design principles.
+
+            Every project I work on is optimized for performance, accessibility, and
+            search engine visibility to ensure strong real-world impact.
           </motion.p>
 
           {/* btn */}
