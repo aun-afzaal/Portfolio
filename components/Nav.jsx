@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-
-// icons
+import { useState, useEffect } from "react";
 import {
   HiHome,
   HiUser,
@@ -11,62 +9,125 @@ import {
   HiEnvelope,
 } from "react-icons/hi2";
 
-// nav data
 export const navData = [
-  { name: "home", path: "/", Icon: HiHome },
-  { name: "about", path: "/about", Icon: HiUser },
-  { name: "services", path: "/services", Icon: HiRectangleGroup },
-  { name: "work", path: "/work", Icon: HiViewColumns },
-  {
-    name: "testimonials",
-    path: "/testimonials",
-    Icon: HiChatBubbleBottomCenterText,
-  },
-  {
-    name: "contact",
-    path: "/contact",
-    Icon: HiEnvelope,
-  },
+  { name: "home",         path: "/#home",         icon: <HiHome /> },
+  { name: "about",        path: "/#about",        icon: <HiUser /> },
+  { name: "services",     path: "/#services",     icon: <HiRectangleGroup /> },
+  { name: "work",         path: "/#work",         icon: <HiViewColumns /> },
+  { name: "testimonials", path: "/#testimonials", icon: <HiChatBubbleBottomCenterText /> },
+  { name: "contact",      path: "/#contact",      icon: <HiEnvelope /> },
 ];
 
+const SECTIONS = navData.map((n) => n.path.split("#")[1]);
+
 const Nav = () => {
-  const pathname = usePathname();
+  const [active, setActive] = useState("home");
+
+  useEffect(() => {
+    const onScroll = () => {
+      const mid = window.scrollY + window.innerHeight * 0.4;
+      for (const id of SECTIONS) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (mid >= el.offsetTop && mid < el.offsetTop + el.offsetHeight) {
+          setActive(id);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const scrollTo = (e, path) => {
+    e.preventDefault();
+    const id = path.split("#")[1];
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setActive(id);
+  };
 
   return (
-    <nav className="flex flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:max-w-md xl:h-screen">
-      <div className="flex w-full xl:flex-col items-center justify-between xl:justify-center gap-y-10 px-4 md:px-40 xl:px-0 h-[80px] xl:h-max py-8 bg-white/10 backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full">
-        {navData.map((link, i) => (
-          <Link
-            className={`${
-              link.path === pathname && "text-accent"
-            } relative flex items-center group hover:text-accent transition-all duration-300`}
-            href={link.path}
-            key={i}
-          >
-            {/* tolltip */}
-            <div
-              role="tooltip"
-              className="absolute pr-14 right-0 hidden xl:group-hover:flex"
+    <nav
+      style={{
+        position: "fixed",
+        zIndex: 50,
+        /* Mobile: bottom bar */
+        bottom: 0,
+        left: 0,
+        right: 0,
+        /* Desktop: right column */
+      }}
+      className="xl:bottom-auto xl:left-auto xl:right-[2%] xl:top-0 xl:w-16 xl:h-screen xl:flex xl:items-center xl:justify-center"
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-around",
+          gap: "0",
+          background: "rgba(5,15,30,0.82)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          borderTop: "1px solid var(--navy-500)",
+          padding: "0.75rem 1.5rem",
+          fontSize: "1.5rem",
+        }}
+        className="w-full xl:flex-col xl:justify-center xl:gap-y-8 xl:border-t-0 xl:border xl:border-[var(--navy-500)] xl:rounded-full xl:px-0 xl:py-8 xl:w-16 xl:text-xl"
+      >
+        {navData.map((link) => {
+          const id = link.path.split("#")[1];
+          const isActive = id === active;
+          return (
+            <Link
+              key={id}
+              href={link.path}
+              onClick={(e) => scrollTo(e, link.path)}
+              title={link.name}
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: isActive ? "var(--accent-400)" : "var(--white-300)",
+                transition: "color var(--dur-base) var(--ease-out)",
+              }}
+              className="group hover:text-accent"
             >
-              <div className="bg-white relative flex text-primary items-center p-[6px] rounded-[3px]">
-                <div className="text-[12px] leading-none font-semibold capitalize">
-                  {link.name}
-                </div>
-
-                {/* triangle */}
-                <div
-                  className="border-solid border-l-white border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2"
-                  aria-hidden
+              {/* Desktop tooltip */}
+              <span
+                className="hidden xl:group-hover:flex"
+                style={{
+                  position: "absolute",
+                  right: "100%",
+                  marginRight: "0.75rem",
+                  background: "var(--white-100)",
+                  color: "var(--navy-900)",
+                  fontSize: "0.7rem",
+                  fontWeight: 600,
+                  textTransform: "capitalize",
+                  padding: "4px 10px",
+                  borderRadius: "var(--radius-sm)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {link.name}
+                <span
+                  style={{
+                    position: "absolute",
+                    left: "100%",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    border: "5px solid transparent",
+                    borderLeftColor: "var(--white-100)",
+                  }}
                 />
-              </div>
-            </div>
+              </span>
 
-            {/* icon */}
-            <div>
-              <link.Icon aria-hidden />
-            </div>
-          </Link>
-        ))}
+              {link.icon}
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );

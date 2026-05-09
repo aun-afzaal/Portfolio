@@ -1,27 +1,58 @@
 import Image from "next/image";
-import Link from "next/link";
-
 import { HiArrowRight } from "react-icons/hi2";
 
 const ProjectsBtn = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="mx-auto xl:mx-0 cursor-pointer">
-      <Link
-        href="/work"
-        className="cursor-pointer relative w-[185px] h-[185px] flex justify-center items-center bg-circleStar bg-cover bg-center bg-no-repeat group"
+    <div style={{ cursor: "pointer", margin: "0 auto" }} className="xl:mx-0">
+      <button
+        onClick={handleClick}
+        style={{
+          position: "relative",
+          width: "185px",
+          height: "185px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          backgroundImage: "url('/circle-star.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+        aria-label="View my work"
       >
         <Image
           src="/rounded-text.png"
-          alt="rounded text"
+          alt="View projects"
           width={141}
           height={148}
-          className="animate-spin-slow w-full h-full max-w-[141px] max-h-[148px]"
+          style={{
+            animation: "spin 6s linear infinite",
+            width: "100%",
+            height: "100%",
+            maxWidth: "141px",
+            maxHeight: "148px",
+            /* Tint to match navy theme */
+            filter: "hue-rotate(180deg) brightness(1.1)",
+          }}
         />
         <HiArrowRight
-          className="absolute text-4xl group-hover:translate-x-2 transition-all duration-300"
+          style={{
+            position: "absolute",
+            fontSize: "2rem",
+            color: "var(--white-100)",
+            transition: "transform var(--dur-base) var(--ease-out)",
+          }}
           aria-hidden
         />
-      </Link>
+      </button>
     </div>
   );
 };

@@ -1,46 +1,44 @@
-import { Sora } from "next/font/google";
 import Head from "next/head";
-
 import Header from "../components/Header";
 import Nav from "../components/Nav";
 import TopLeftImg from "../components/TopLeftImg";
 
-// setup font
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
-});
+const Layout = ({ children }) => (
+  <main
+    style={{
+      background: "var(--navy-900)",
+      color: "var(--white-100)",
+      minHeight: "100vh",
+      backgroundImage: "url('/site-bg.svg')",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      backgroundAttachment: "fixed",
+    }}
+  >
+    <Head>
+      <title>Muhammad Aun | Software Engineer</title>
+      <meta name="description" content="Muhammad Aun – Software Engineer building scalable full-stack applications." />
+      <meta name="google-site-verification" content="DoPaRlA8gAeXq5hyUwDX3i0nOqhGl59jZfJ6z0-sm70" />
+      <meta name="author" content="Muhammad Aun" />
+      <meta name="theme-color" content="#3b82f6" />
+      {/* Sora font loaded via CSS @import to avoid build-time network fetch */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </Head>
 
-const Layout = ({ children }) => {
-  return (
-    <main
-      className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
-    >
-      {/* metadata */}
-      <Head>
-        <title>Muhammad Aun | Portfolio</title>
-        <meta
-          name="description"
-          content="Muhammad Aun is a Full-stack web developer with 3+ years of experience."
-        />
-        <meta
-          name="keywords"
-          content="react, next, nextjs, html, css, javascript, js, modern-ui, modern-ux, portfolio, framer-motion, 3d-website, particle-effect"
-        />
-        <meta name="google-site-verification" content="DoPaRlA8gAeXq5hyUwDX3i0nOqhGl59jZfJ6z0-sm70" />
-        <meta name="author" content="Muhammad Aun Afzaal" />
-        <meta name="theme-color" content="#f13024" />
-      </Head>
+    <TopLeftImg />
+    <Nav />
+    <Header />
 
-      <TopLeftImg />
-      <Nav />
-      <Header />
-
-      {/* main content */}
+    {/* bottom padding for mobile nav bar */}
+    <div style={{ paddingBottom: "80px" }}>
       {children}
-    </main>
-  );
-};
+    </div>
+  </main>
+);
 
 export default Layout;

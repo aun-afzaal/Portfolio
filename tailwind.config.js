@@ -4,8 +4,6 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
-    // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -22,28 +20,31 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#131424",
-        secondary: "#393A47",
-        accent: "#F13024",
+        // All mapped to CSS variables — change everything from globals.css
+        primary:   "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        accent:    "var(--color-accent)",
+        surface:   "var(--color-surface)",
+        border:    "var(--color-border)",
+        muted:     "var(--color-muted)",
+        textBase:  "var(--color-text-base)",
+        textDim:   "var(--color-text-dim)",
       },
       backgroundImage: {
-        explosion: 'url("/bg-explosion.png")',
-        circles: 'url("/bg-circles.png")',
+        explosion:  'url("/bg-explosion.png")',
+        circles:    'url("/bg-circles.png")',
         circleStar: 'url("/circle-star.svg")',
-        site: 'url("/site-bg.svg")',
+        site:       'url("/site-bg.svg")',
       },
       animation: {
         "spin-slow": "spin 6s linear infinite",
       },
       fontFamily: {
-        poppins: [`var(--font-poppins)`, "sans-serif"],
-        sora: [`var(--font-sora)`, "sans-serif"],
+        // Maps to CSS variable set in globals.css / Layout
+        display: ["var(--font-display)", "sans-serif"],
+        body:    ["var(--font-body)",    "sans-serif"],
+        sora:    ["var(--font-sora)",    "sans-serif"],
       },
-    },
-  },
-  container: {
-    padding: {
-      DEFAULT: "15px",
     },
   },
   plugins: [require("tailwind-scrollbar")],
