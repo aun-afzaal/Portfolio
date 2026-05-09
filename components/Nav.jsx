@@ -11,8 +11,8 @@ import {
 
 export const navData = [
   { name: "home",         path: "/#home",         icon: <HiHome /> },
-  { name: "about",        path: "/#about",        icon: <HiUser /> },
   { name: "services",     path: "/#services",     icon: <HiRectangleGroup /> },
+  { name: "about",        path: "/#about",        icon: <HiUser /> },
   { name: "work",         path: "/#work",         icon: <HiViewColumns /> },
   { name: "testimonials", path: "/#testimonials", icon: <HiChatBubbleBottomCenterText /> },
   { name: "contact",      path: "/#contact",      icon: <HiEnvelope /> },
@@ -52,20 +52,17 @@ const Nav = () => {
       style={{
         position: "fixed",
         zIndex: 50,
-        /* Mobile: bottom bar */
         bottom: 0,
-        left: 0,
         right: 0,
-        /* Desktop: right column */
       }}
-      className="xl:bottom-auto xl:left-auto xl:right-[2%] xl:top-0 xl:w-16 xl:h-screen xl:flex xl:items-center xl:justify-center"
+      className="lg:w-100 w-full xl:bottom-auto xl:left-auto xl:right-[2%] xl:top-0 xl:w-16 xl:h-screen xl:flex xl:items-center xl:justify-center"
     >
       <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-around",
-          gap: "0",
+          gap: "20px",
           background: "rgba(5,15,30,0.82)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",

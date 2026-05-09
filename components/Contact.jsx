@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { BsArrowRight } from "react-icons/bs";
-import { fadeIn } from "../../variants";
+import { fadeIn } from "../variants";
 import { useState } from "react";
 
 const Contact = () => {
@@ -62,20 +62,17 @@ const Contact = () => {
   };
 
   return (
-    <div className="h-[100vh] w-full bg-primary/30">
-      <div className="container mx-auto xl:py-36 py-20 flex items-center justify-center h-full">
-
-        <div className="w-full max-w-[700px] mb-14 md:mb-0">
-
-          <motion.h2
+    <div className="">
+      <div className="container mx-auto lg:pt-20 flex items-center justify-center h-full">
+        <div className="w-full max-w-[700px]">
+        <motion.h2
             variants={fadeIn("up", 0.2)}
             initial="hidden"
             animate="show"
-            className="h2 text-center mb-12"
+            className="h2 text-center"
           >
-            Let's <span className="text-accent">connect.</span>
+            Contact <span className="text-accent">Form.</span>
           </motion.h2>
-
           <motion.form
             onSubmit={handleSubmit}
             variants={fadeIn("up", 0.4)}
@@ -83,10 +80,8 @@ const Contact = () => {
             animate="show"
             className="flex flex-col gap-6"
           >
-
             {/* ROW: First + Last Name */}
             <div className="flex flex-col md:flex-row gap-6">
-
               <div className="form-group w-full">
                 <label>First Name</label>
                 <input
@@ -110,7 +105,6 @@ const Contact = () => {
                   disabled={isLoading}
                 />
               </div>
-
             </div>
 
             {/* EMAIL */}
@@ -130,11 +124,7 @@ const Contact = () => {
             <div className="form-group">
               <label className="text-white">Service Needed</label>
 
-              <select
-                name="service"
-                className="input"
-                disabled={isLoading}
-              >
+              <select name="service" className="input" disabled={isLoading}>
                 <option value="" className="text-black">
                   Select a service...
                 </option>
@@ -145,7 +135,7 @@ const Contact = () => {
                 <option className="text-black">UI/UX Design</option>
                 <option className="text-black">Other</option>
               </select>
-             </div>
+            </div>
 
             {/* MESSAGE */}
             <div className="form-group">
@@ -164,7 +154,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="btn rounded-full border border-white/50 max-w-[200px] px-8 flex items-center justify-center group hover:border-accent transition relative overflow-hidden"
+              className="btn rounded-full w-full border border-white/50 max-w-[200px] px-8 flex items-center justify-center group hover:border-accent transition relative"
             >
               {/* default text */}
               <span className="transition-transform duration-500 group-hover:-translate-y-10">
@@ -173,17 +163,13 @@ const Contact = () => {
 
               {/* hover text */}
               <span className="absolute translate-y-10 group-hover:translate-y-0 transition-transform duration-500 text-accent">
-              <BsArrowRight className="ml-2" />
+                <BsArrowRight className="ml-2" />
               </span>
             </button>
 
             {/* STATUS */}
-            {status && (
-              <p className="text-sm text-white/70 mt-2">{status}</p>
-            )}
-
+            {status && <p className="text-sm text-white/70 mt-2">{status}</p>}
           </motion.form>
-
         </div>
       </div>
     </div>

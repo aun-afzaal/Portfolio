@@ -62,13 +62,12 @@ const Socials = () => {
           className={`relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 hover:scale-110 ${social.bg}`}
         >
           {/* Icon */}
-          {social.Icon && (
-            <social.Icon className="text-white text-2xl" />
-          )}
+          {social.Icon && <social.Icon className="text-white text-2xl" />}
 
           {/* Abcodify logo */}
           {social.logo && (
             <Image
+              loading="lazy"
               src={social.logo}
               alt={social.name}
               width={28}

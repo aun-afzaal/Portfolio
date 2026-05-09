@@ -270,9 +270,10 @@ html {
    ============================================================ */
 .swiper-pagination {
   position: absolute !important;
-  left: 50% !important;
+  left: 42% !important;
   transform: translateX(-50%);
-  bottom: 10px !important;
+  border: 1px solid white;
+  bottom: 0px !important;
   background: rgba(5,15,30,0.4) !important;
   padding: 10px 12px;
   border-radius: var(--radius-full);
@@ -287,6 +288,7 @@ html {
   width: 8px;
   height: 8px;
   opacity: 1;
+  border: 1px solid white;
   transition: all var(--dur-base) var(--ease-out);
 }
 
@@ -318,7 +320,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  /* height: 100%; */
   cursor: pointer;
   transition:
     border-color var(--dur-base) var(--ease-out),
@@ -354,22 +356,16 @@ html {
 /* ============================================================
    WORK SLIDE OVERLAY
    ============================================================ */
-.work-slide-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(2,11,24,0.0),
-    rgba(29,78,216,0.65) 60%,
-    rgba(5,15,30,0.9)
-  );
-  opacity: 0;
-  transition: opacity var(--dur-slow) var(--ease-out);
-}
-
-.work-slide-item:hover .work-slide-overlay {
-  opacity: 1;
-}
+   .work-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: var(--accent-400);
+    transition: opacity 0.4s ease;
+  }
+  
+  .group:hover .work-slide-overlay {
+    opacity: 0.4;
+  }
 
 /* ============================================================
    COUNTER DIVIDER

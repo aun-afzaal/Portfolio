@@ -43,11 +43,11 @@ const ServiceSlider = () => (
     pagination={{ clickable: true }}
     modules={[FreeMode, Pagination]}
     freeMode
-    className="h-[340px] sm:h-[380px] w-full"
+    className="w-full sm:h-[520px] h-[340px]"
   >
     {serviceData.map((item, i) => (
       <SwiperSlide key={i}>
-        <div className="service-card group h-full">
+        <div className="service-card group h-[90%] w-full">
           <div className="service-card__icon">
             <item.Icon aria-hidden />
           </div>

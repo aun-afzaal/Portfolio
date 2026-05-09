@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 
-import Bulb from "../../components/Bulb";
-import Circles from "../../components/Circles";
-import ServiceSlider from "../../components/ServiceSlider";
-import { fadeIn } from "../../variants";
+import Bulb from "./Bulb";
+import Circles from "./Circles";
+import SectionLabel from "./SectionLabel";
+import ServiceSlider from "./ServiceSlider";
+import { fadeIn } from "../variants";
 
 // ✅ REAL SERVICES DATA (from your experience)
 export const serviceData = [
@@ -41,7 +42,7 @@ export const serviceData = [
 
 const Services = () => {
   return (
-    <div className="h-[100vh] bg-primary/30 xl:py-36 py-20 flex items-center w-full relative">
+    <div className="bg-[var(--navy-800)] xl:py-36 py-20 flex items-center w-full relative h-full">
       <Circles />
       <Bulb />
 
@@ -49,8 +50,8 @@ const Services = () => {
         <div className="flex flex-col xl:flex-row gap-x-8">
 
           {/* LEFT TEXT SECTION */}
-          <div className="text-center flex xl:w-[30vw] flex-col lg:text-left mb-4 xl:mb-0">
-
+          <div className="text-center flex xl:w-[40vw] flex-col lg:text-left mb-4 xl:mb-0">
+          <SectionLabel className="text-capitalize">What i offer</SectionLabel>
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"

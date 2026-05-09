@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FaQuoteLeft } from "react-icons/fa";
-import { Navigation } from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -30,7 +30,18 @@ const testimonialData = [
 ];
 
 const TestimonialSlider = () => (
-  <Swiper navigation modules={[Navigation]} autoHeight className="min-h-[400px] h-auto md:mt-24">
+  <Swiper
+    navigation
+    modules={[Navigation, Pagination, Autoplay]}
+    spaceBetween={20}
+    slidesPerView={1}
+    loop
+    autoplay={{ delay: 5000, disableOnInteraction: false }}
+    // pagination={{ clickable: true }}
+    grabCursor
+    autoHeight
+    className="min-h-[400px] h-auto md:mt-24"
+  >
     {testimonialData.map((person, i) => (
       <SwiperSlide key={i}>
         <div
@@ -45,16 +56,33 @@ const TestimonialSlider = () => (
         >
           {/* Avatar + name */}
           <div
-            style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", minWidth: "180px" }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+              minWidth: "180px",
+            }}
           >
             <Image
               src={person.image}
               width={90}
               height={90}
               alt={person.name}
-              style={{ borderRadius: "50%", border: "2px solid var(--navy-500)", marginBottom: "0.75rem" }}
+              style={{
+                borderRadius: "50%",
+                border: "2px solid var(--navy-500)",
+                marginBottom: "0.75rem",
+              }}
             />
-            <p style={{ color: "var(--white-100)", fontWeight: 600, fontSize: "1rem", marginBottom: "0.25rem" }}>
+            <p
+              style={{
+                color: "var(--white-100)",
+                fontWeight: 600,
+                fontSize: "1rem",
+                marginBottom: "0.25rem",
+              }}
+            >
               {person.name}
             </p>
             <p
@@ -73,13 +101,22 @@ const TestimonialSlider = () => (
           {/* Divider (desktop) */}
           <div
             className="hidden lg:block"
-            style={{ width: "1px", height: "160px", background: "var(--navy-500)", flexShrink: 0 }}
+            style={{
+              width: "1px",
+              height: "60px",
+              background: "var(--navy-500)",
+              flexShrink: 0,
+            }}
           />
 
           {/* Quote */}
           <div style={{ flex: 1, paddingLeft: 0 }} className="lg:pl-10">
             <FaQuoteLeft
-              style={{ fontSize: "2.5rem", color: "var(--navy-500)", marginBottom: "1rem" }}
+              style={{
+                fontSize: "2.5rem",
+                color: "var(--navy-500)",
+                marginBottom: "1rem",
+              }}
               aria-hidden
             />
             <p

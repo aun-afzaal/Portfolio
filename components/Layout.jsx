@@ -35,7 +35,7 @@ const Layout = ({ children }) => (
     <Header />
 
     {/* bottom padding for mobile nav bar */}
-    <div style={{ paddingBottom: "80px" }}>
+    <div>
       {children}
     </div>
   </main>

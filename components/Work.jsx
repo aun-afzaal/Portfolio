@@ -1,19 +1,20 @@
 import { motion } from "framer-motion";
 
-import Bulb from "../../components/Bulb";
-import Circles from "../../components/Circles";
-import WorkSlider from "../../components/WorkSlider";
-import { fadeIn } from "../../variants";
+import Bulb from "./Bulb";
+import Circles from "./Circles";
+import WorkSlider from "./WorkSlider";
+import SectionLabel from "./SectionLabel";
+import { fadeIn } from "../variants";
 
 const Work = () => {
   return (
-    <div className="md:h-[100vh] w-full h-full bg-primary/30 xl:py-36 py-20 flex items-center">
+    <div className="bg-[var(--navy-800)] overflow-hidden xl:py-36 py-20 flex items-center w-full relative h-full">
       <Circles />
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-x-8">
-
           {/* text */}
           <div className="text-center flex xl:w-[30vw] flex-col lg:text-left mb-4 xl:mb-0">
+            <SectionLabel>Portfolio</SectionLabel>
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"
@@ -31,11 +32,9 @@ const Work = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              I am Muhammad Aun, a full-stack web developer specializing in
-              React, Next.js, Node.js, and modern backend systems. I build
-              scalable SaaS platforms, admin dashboards, e-commerce systems,
-              and real-time web applications with strong focus on performance,
-              SEO, and clean UI/UX.
+              Production systems, SaaS platforms, and digital products built
+              with modern technologies — each demonstrating real-world
+              problem-solving and scalable engineering.
             </motion.p>
           </div>
 

@@ -2,8 +2,9 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import Avatar from "../../components/Avatar";
-import { fadeIn } from "../../variants";
+import Avatar from "./Avatar";
+import { fadeIn } from "../variants";
+import { BsX } from "react-icons/bs";
 const PROJECTS = [
   {
     id: 0,
@@ -443,8 +444,7 @@ const PROJECTS = [
       desc: "ترحيل كامل من JavaScript إلى TypeScript لتحسين سلامة الأنواع وقابلية الصيانة.",
       challenge:
         "ترحيل حاسبة زجاج Angular من JS إلى TypeScript دون كسر الحسابات.",
-      solution:
-        "تعليق نوع منهجي. واجهات لنماذج الحسابات. الوضع الصارم مفعّل.",
+      solution: "تعليق نوع منهجي. واجهات لنماذج الحسابات. الوضع الصارم مفعّل.",
       results: [
         "ترحيل كامل JS إلى TS",
         "وضع TypeScript الصارم",
@@ -498,7 +498,7 @@ const PROJECTS = [
       ],
     },
   },
-  
+
   {
     id: 12,
     category: "web",
@@ -811,7 +811,7 @@ const PROJECTS = [
       ],
     },
   },
-  
+
   {
     id: 19,
     category: "web",
@@ -845,10 +845,8 @@ const PROJECTS = [
       title: "منصة بورتفوليو للمطور",
       tag: "Next.js · MongoDB",
       desc: "بورتفوليو حديث مع مشاريع ديناميكية ونظام تسجيل دخول وقاعدة بيانات.",
-      challenge:
-        "إنشاء بورتفوليو ديناميكي مع قاعدة بيانات ونظام تسجيل دخول.",
-      solution:
-        "Next.js + MongoDB مع صفحات ديناميكية ونظام مصادقة.",
+      challenge: "إنشاء بورتفوليو ديناميكي مع قاعدة بيانات ونظام تسجيل دخول.",
+      solution: "Next.js + MongoDB مع صفحات ديناميكية ونظام مصادقة.",
       results: [
         "عرض مشاريع ديناميكي",
         "تكامل MongoDB",
@@ -856,12 +854,11 @@ const PROJECTS = [
         "واجهة حديثة",
       ],
     },
-  }
+  },
 ];
 
-export default function ProjectPage() {
+export default function ProjectPage({ slug ,setOpenModal}) {
   const router = useRouter();
-  const { slug } = router.query;
 
   if (!router.isReady) return null;
 
@@ -872,20 +869,30 @@ export default function ProjectPage() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-primary/30 py-20 xl:py-36 text-center xl:text-left relative overflow-auto h-6">
-      
+    <div className="bg-[var(--navy-800)] overflow-hidden xl:py-36 py-20 flex items-center w-full relative h-full">
       {/* Avatar */}
       <motion.div
         variants={fadeIn("right", 0.2)}
         initial="hidden"
         animate="show"
-        className="hidden xl:flex absolute bottom-0 -left-[300px]"
+        className="hidden xl:flex absolute bottom-0 -right-[300px]"
       >
         <Avatar />
       </motion.div>
-
+      <button
+        onClick={() => setOpenModal(null)}
+        style={{
+          position: "absolute",
+          top: "0rem",
+          right: "0rem",
+          border: "none",
+          cursor: "pointer",
+          fontSize: "2rem",
+        }}
+      >
+        <BsX />
+      </button>
       <div className="container mx-auto flex flex-col xl:flex-row gap-10 items-center">
-        
         {/* LEFT CONTENT */}
         <div className="flex-1">
           <motion.h1

@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <header
       style={{
-        position: "sticky",
+        position: "fixed",
         top: 0,
         zIndex: 40,
         width: "100%",
@@ -28,9 +28,9 @@ const Header = () => {
     >
       <div className="container mx-auto">
         <div
+          className="lg:flex-row flex-col flex"
           style={{
             display: "flex",
-            flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
             gap: "1rem",
@@ -38,20 +38,17 @@ const Header = () => {
           }}
         >
           {/* Logo */}
-          <Link href="/#home" style={{ flexShrink: 0 }}>
-            <Image
-              src="/logo.svg"
-              alt="Muhammad Aun – Software Engineer"
-              width={200}
-              height={44}
-              priority
-              style={{ width: "clamp(140px, 18vw, 200px)", height: "auto", filter: "brightness(0) invert(1)" }}
-            />
-          </Link>
-
-          {/* Right: Resume + Socials */}
-          <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
-            {/* Resume button */}
+          <div className="flex text-center justify-between w-full">
+            <Link href="/#home" style={{ flexShrink: 0, marginTop: 15 }}>
+              <Image
+                src="/logo.svg"
+                className="w-[clamp(140px, 18vw, 200px)]"
+                alt="Muhammad Aun – Software Engineer"
+                width={200}
+                height={44}
+                priority
+              />
+            </Link>
             <motion.button
               onClick={handleResumeDownload}
               className="btn"
@@ -77,7 +74,11 @@ const Header = () => {
               </svg>
               Resume
             </motion.button>
+          </div>
 
+          {/* Right: Resume + Socials */}
+          <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+            {/* Resume button */}
             {/* Socials */}
             <Socials />
           </div>
