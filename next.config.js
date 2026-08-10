@@ -1,5 +1,6 @@
 const nextConfig = {
   output: 'export',
+  basePath: '/portfolio',
   reactStrictMode: true,
   swcMinify: true,
   images: {
