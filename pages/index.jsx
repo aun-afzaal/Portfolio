@@ -338,7 +338,7 @@ export default function Home() {
       <footer id="footer" className="text-center bg-[var(--navy-900)]">
         © 2026{" "}
         <a
-          href="https://aun.abcodify.com"
+          href="/?aun=true"
           target="_blank"
           rel="noopener noreferrer"
         >
