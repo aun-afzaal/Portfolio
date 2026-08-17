@@ -12,9 +12,9 @@ const Work = () => {
       <Circles />
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-x-8">
-          {/* text */}
+          {/* Text Section */}
           <div className="text-center flex xl:w-[30vw] flex-col lg:text-left mb-4 xl:mb-0">
-            <SectionLabel>Portfolio</SectionLabel>
+            <SectionLabel>Featured Projects</SectionLabel>
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"
@@ -22,7 +22,7 @@ const Work = () => {
               exit="hidden"
               className="h2 xl:mt-12"
             >
-              My Work <span className="text-accent">Portfolio</span>
+              Selected <span className="text-accent">Systems</span>
             </motion.h2>
 
             <motion.p
@@ -32,13 +32,13 @@ const Work = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              Production systems, SaaS platforms, and digital products built
-              with modern technologies — each demonstrating real-world
-              problem-solving and scalable engineering.
+              A showcase of production-grade systems, cloud-native SaaS
+              solutions, and scalable frontend architectures built to handle
+              complex business logic and high traffic.
             </motion.p>
           </div>
 
-          {/* slider */}
+          {/* Work Slider Component */}
           <motion.div
             variants={fadeIn("down", 0.6)}
             initial="hidden"

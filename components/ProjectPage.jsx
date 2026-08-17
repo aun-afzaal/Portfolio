@@ -857,7 +857,7 @@ const PROJECTS = [
   },
 ];
 
-export default function ProjectPage({ slug ,setOpenModal}) {
+export default function ProjectPage({ slug, setOpenModal }) {
   const router = useRouter();
 
   if (!router.isReady) return null;
@@ -869,89 +869,91 @@ export default function ProjectPage({ slug ,setOpenModal}) {
   }
 
   return (
-    <div className="bg-[var(--navy-800)] overflow-hidden xl:py-36 py-20 flex items-center w-full relative h-full">
-      {/* Avatar */}
-      <motion.div
-        variants={fadeIn("right", 0.2)}
-        initial="hidden"
-        animate="show"
-        className="hidden xl:flex absolute bottom-0 -right-[300px]"
-      >
-        <Avatar />
-      </motion.div>
-      <button
-        onClick={() => setOpenModal(null)}
-        style={{
-          position: "absolute",
-          top: "0rem",
-          right: "0rem",
-          border: "none",
-          cursor: "pointer",
-          fontSize: "2rem",
-        }}
-      >
-        <BsX />
-      </button>
-      <div className="container mx-auto flex flex-col xl:flex-row gap-10 items-center">
-        {/* LEFT CONTENT */}
-        <div className="flex-1">
-          <motion.h1
-            variants={fadeIn("right", 0.2)}
-            initial="hidden"
-            animate="show"
-            className="text-4xl font-bold mb-6"
-          >
-            {project.title}
-          </motion.h1>
+    <div className="bg-[var(--navy-800)] overflow-hidden relative max-h-[90vh] overflow-y-auto">
+        <button
+          onClick={() => setOpenModal(null)}
+          className="sticky top-0 z-50 ml-auto flex items-center justify-center"
+          style={{
+            border: "none",
+            cursor: "pointer",
+            fontSize: "3rem",
+            color: "#fff",
+            background: "#000",
+          }}
+        >
+          <BsX />
+        </button>
+      <div className="py-20 flex items-center w-full relative h-full">
+        {/* Avatar */}
+        <motion.div
+          variants={fadeIn("right", 0.2)}
+          initial="hidden"
+          animate="show"
+          className="hidden xl:flex absolute bottom-0 -right-[300px]"
+        >
+          {/* <Avatar /> */}
+        </motion.div>
+        <div className="container mx-auto flex flex-col xl:flex-row gap-10 items-center">
+          {/* LEFT CONTENT */}
+          <div className="flex-1">
+            <motion.h1
+              variants={fadeIn("right", 0.2)}
+              initial="hidden"
+              animate="show"
+              className="text-4xl font-bold mb-6"
+            >
+              {project.title}
+            </motion.h1>
 
-          <p className="text-white/70 mb-6">{project.desc}</p>
+            <p className="text-white/70 mb-6">{project.desc}</p>
 
-          {/* STACK */}
-          <div className="flex flex-wrap gap-2 mb-6 justify-center xl:justify-start">
-            {project.stack.map((tech, i) => (
-              <span
-                key={i}
-                className="px-3 py-1 text-sm bg-white/10 rounded-full"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* CHALLENGE */}
-          <div className="mb-4">
-            <h3 className="text-xl font-semibold mb-2">Challenge</h3>
-            <p className="text-white/60">{project.challenge}</p>
-          </div>
-
-          {/* SOLUTION */}
-          <div className="mb-4">
-            <h3 className="text-xl font-semibold mb-2">Solution</h3>
-            <p className="text-white/60">{project.solution}</p>
-          </div>
-
-          {/* RESULTS */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Results</h3>
-            <ul className="list-disc list-inside text-white/60">
-              {project.results.map((r, i) => (
-                <li key={i}>{r}</li>
+            {/* STACK */}
+            <div className="flex flex-wrap gap-2 mb-6 justify-center xl:justify-start">
+              {project.stack.map((tech, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 text-sm bg-white/10 rounded-full"
+                >
+                  {tech}
+                </span>
               ))}
-            </ul>
-          </div>
-        </div>
+            </div>
 
-        {/* RIGHT IMAGE */}
-        {project.img && (
-          <div className="relative w-full max-w-xl h-[400px]">
-            <Image
-              src={`${project.img}`}
-              alt={project.title}
-              fill
-              className="object-cover rounded-xl"
-            />
+            {/* CHALLENGE */}
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold mb-2">Challenge</h3>
+              <p className="text-white/60">{project.challenge}</p>
+            </div>
+
+            {/* SOLUTION */}
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold mb-2">Solution</h3>
+              <p className="text-white/60">{project.solution}</p>
+            </div>
+
+            {/* RESULTS */}
+            <div>
+              <h3 className="text-xl font-semibold mb-2">Results</h3>
+              <ul className="list-disc list-inside text-white/60">
+                {project.results.map((r, i) => (
+                  <li key={i}>{r}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-        )}
+
+          {/* RIGHT IMAGE */}
+          {project.img && (
+            <div className="relative w-full max-w-xl h-[400px]">
+              <Image
+                src={project.img}
+                alt={project.title}
+                fill
+                className="object-cover rounded-xl"
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

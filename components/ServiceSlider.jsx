@@ -1,52 +1,99 @@
-import { RxCode, RxGlobe, RxLayers, RxLightningBolt, RxRocket, RxArrowTopRight } from "react-icons/rx";
-import { FreeMode, Pagination } from "swiper/modules";
+import {
+  RxCode,
+  RxGlobe,
+  RxLayers,
+  RxRocket,
+  RxDesktop,
+  RxClipboard,
+  RxLightningBolt,
+  RxMixerHorizontal,
+  RxArrowTopRight,
+} from "react-icons/rx";
+import { FiDatabase, FiServer } from "react-icons/fi";
+import { FreeMode, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-const serviceData = [
+export const serviceData = [
   {
     Icon: RxCode,
-    title: "Full-Stack Development",
-    description: "Building scalable web apps using React, Next.js, Node.js, NestJS and PostgreSQL with production-ready architecture.",
+    title: "Full-Stack Software Engineering",
+    description:
+      "Engineering resilient, production-grade web applications using React, Next.js, Node.js, and NestJS backed by scalable PostgreSQL architecture.",
+  },
+  {
+    Icon: FiServer,
+    title: "DevOps & Cloud Infrastructure",
+    description:
+      "Automating deployment pipelines (CI/CD), Docker containerization, cloud hosting (AWS, Vercel, Netlify), and zero-downtime server setups.",
+  },
+  {
+    Icon: FiDatabase,
+    title: "Database Architecture & Optimization",
+    description:
+      "Designing multi-tenant relational and NoSQL schemas (PostgreSQL, MongoDB), indexing strategies, data migrations, and query tuning.",
+  },
+  {
+    Icon: RxMixerHorizontal,
+    title: "Enterprise ERP & Back-Office Systems",
+    description:
+      "Developing customized ERP modules, multi-level financial reporting, complex user roles, permission matrices, and workflow automation.",
+  },
+  {
+    Icon: RxClipboard,
+    title: "Order & Inventory Management Systems",
+    description:
+      "Building real-time order processing pipelines, automated inventory tracking, invoice generators, and logistics integration modules.",
+  },
+  {
+    Icon: RxDesktop,
+    title: "Custom CMS & Modern WordPress Engineering",
+    description:
+      "Architecting enterprise headless CMS setups, high-performance custom WordPress themes, and REST/GraphQL API integrations.",
   },
   {
     Icon: RxGlobe,
-    title: "SaaS Platforms",
-    description: "End-to-end SaaS systems including booking platforms, marketplaces, admin panels, and multi-tenant systems.",
+    title: "SaaS & Multi-Tenant Platforms",
+    description:
+      "Engineering end-to-end SaaS products, two-sided marketplaces, real-time booking portals, and scalable administrative consoles.",
   },
   {
     Icon: RxLayers,
-    title: "Backend Systems",
-    description: "API development, authentication systems, Stripe integration, WebSockets, and database architecture.",
+    title: "Backend & Systems Architecture",
+    description:
+      "Designing high-concurrency REST & GraphQL APIs, microservices, distributed authentication, and payment gateway rails (Stripe).",
   },
   {
     Icon: RxLightningBolt,
-    title: "Real-time Applications",
-    description: "Live dashboards, chat systems, notifications, tracking systems, and WebSocket-based applications.",
+    title: "Real-Time Infrastructure",
+    description:
+      "Building low-latency event-driven systems using WebSockets, pub/sub messaging, dynamic notifications, and live operational dashboards.",
   },
   {
     Icon: RxRocket,
-    title: "System Integration",
-    description: "Integration with Stripe, AWS S3, Mailgun, PMS systems, and third-party APIs with secure workflows.",
+    title: "Third-Party & API Integrations",
+    description:
+      "Connecting AWS S3 infrastructure, Mailgun email services, identity verification (KYC), and custom REST/gRPC API endpoints.",
   },
 ];
 
 const ServiceSlider = () => (
   <Swiper
     breakpoints={{
-      320: { slidesPerView: 1,  spaceBetween: 15 },
-      640: { slidesPerView: 2,  spaceBetween: 15 },
-      1024:{ slidesPerView: 3,  spaceBetween: 20 },
+      320: { slidesPerView: 1, spaceBetween: 15 },
+      640: { slidesPerView: 2, spaceBetween: 15 },
+      1024: { slidesPerView: 2, spaceBetween: 20 },
     }}
+    // navigation
     pagination={{ clickable: true }}
-    modules={[FreeMode, Pagination]}
+    modules={[FreeMode, Navigation, Pagination]}
     freeMode
-    className="w-full sm:h-[520px] h-[340px]"
+    className="w-full h-[380px]"
   >
     {serviceData.map((item, i) => (
-      <SwiperSlide key={i}>
+      <SwiperSlide key={i} id={item.id}>
         <div className="service-card group h-[90%] w-full">
           <div className="service-card__icon">
             <item.Icon aria-hidden />
@@ -63,7 +110,13 @@ const ServiceSlider = () => (
             >
               {item.title}
             </p>
-            <p style={{ fontSize: "0.875rem", lineHeight: 1.7, color: "var(--white-300)" }}>
+            <p
+              style={{
+                fontSize: "0.875rem",
+                lineHeight: 1.7,
+                color: "var(--white-300)",
+              }}
+            >
               {item.description}
             </p>
           </div>

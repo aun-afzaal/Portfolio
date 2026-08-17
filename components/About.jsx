@@ -6,14 +6,20 @@ import {
   FaFigma,
   FaHtml5,
   FaJs,
+  FaNodeJs,
   FaReact,
   FaWordpress,
 } from "react-icons/fa";
 import {
   SiAdobephotoshop,
   SiAdobexd,
+  SiDocker,
   SiFramer,
+  SiMongodb,
+  SiNestjs,
   SiNextdotjs,
+  SiPostgresql,
+  SiTypescript,
 } from "react-icons/si";
 
 import Avatar from "./Avatar";
@@ -21,36 +27,39 @@ import SectionLabel from "./SectionLabel";
 import Circles from "./Circles";
 import { fadeIn } from "../variants";
 
-//  data
+// Enhanced skills & profile data with engineering terminology
 const aboutData = [
   {
     title: "profile",
     info: [
-      { title: "Name", stage: "Muhammad Aun · Software Engineer" },
+      { title: "Role", stage: "Full-Stack Software Engineer" },
       { title: "Location", stage: "Lahore, Punjab, Pakistan" },
-      { title: "Email", stage: "codewithaun@gmail.com" },
+      { title: "Email", stage: "dev.aunafzaal@gmail.com" },
       { title: "Phone", stage: "+92 336 1484463" },
     ],
   },
   {
-    title: "skills",
+    title: "tech stack",
     info: [
       {
-        title: "Web Development",
+        title: "Frontend Engineering",
         icons: [
           FaHtml5,
           FaCss3,
           FaJs,
+          SiTypescript,
           FaReact,
           SiNextdotjs,
           SiFramer,
-          FaWordpress,
         ],
       },
-      { title: "Backend & Tools", icons: [SiNextdotjs, FaReact, FaJs] },
       {
-        title: "UI/UX & Design",
-        icons: [FaFigma, SiAdobexd, SiAdobephotoshop],
+        title: "Backend & Databases",
+        icons: [FaNodeJs, SiNestjs, SiPostgresql, SiMongodb, SiDocker],
+      },
+      {
+        title: "UI/UX & Design Systems",
+        icons: [FaFigma, SiAdobexd, SiAdobephotoshop, FaWordpress],
       },
     ],
   },
@@ -69,11 +78,6 @@ const aboutData = [
         title: "BS Information Technology – University of Punjab",
         stage: "2019 – 2024",
       },
-      {
-        title: "FSc Pre-Engineering – Punjab Group of Colleges",
-        stage: "2017 – 2019",
-      },
-      { title: "Matriculation – Islamia Public School", stage: "2015 – 2017" },
     ],
   },
 ];
@@ -83,7 +87,7 @@ const About = () => {
   return (
     <div className="bg-[var(--navy-900)] overflow-hidden xl:py-36 py-20 flex items-center w-full relative h-full">
       <Circles />
-      {/* avatar img */}
+      {/* Avatar Image */}
       <motion.div
         variants={fadeIn("right", 0.2)}
         initial="hidden"
@@ -97,28 +101,28 @@ const About = () => {
       <div
         className="container mx-auto"
         style={{ display: "flex", flexDirection: "column", gap: "3rem" }}
-        >
-        {/* Left: headline + counters */}
+      >
+        {/* Left: Headline + Counters */}
         <div style={{ flex: 1 }}>
-        <SectionLabel>About Me</SectionLabel>
+          <SectionLabel>About Me</SectionLabel>
           <motion.div
             variants={fadeIn("right", 0.2)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
           >
-            {/* <SectionLabel>About me</SectionLabel> */}
             <h2 className="h2">
-              Building <span className="text-accent">scalable</span> products
-              <br />
-              with modern engineering.
+              Engineering <span className="text-accent">Resilient</span> Systems
+              <br />& Modern Digital Experiences.
             </h2>
             <p style={{ marginBottom: "2.5rem" }}>
-              Software Engineer with experience building full-stack applications
-              using React, Node.js, NestJS, and PostgreSQL. I've shipped
-              production systems — SaaS platforms, marketplaces, KYC flows,
-              real-time apps — serving 1000+ users. Focused on performance,
-              scalability, and clean architecture.
+              Full-Stack Software Engineer with specialized experience in
+              JavaScript/TypeScript ecosystems (React, Next.js, Node.js, NestJS,
+              and PostgreSQL). I've architected and delivered production-grade
+              infrastructure—from high-conversion SaaS platforms and automated
+              KYC workflows to real-time event-driven systems—serving thousands
+              of active users. Dedicated to code readability, strict typing,
+              scalable microservices, and performance tuning.
             </p>
           </motion.div>
 
@@ -131,10 +135,10 @@ const About = () => {
             style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}
           >
             {[
-              { end: 3, suffix: "+", label: "Years experience" },
-              { end: 3, suffix: "", label: "Companies worked with" },
-              { end: 15, suffix: "+", label: "Projects shipped" },
-              { end: 1000, suffix: "+", label: "Users served" },
+              { end: 3, suffix: "+", label: "Years Experience" },
+              { end: 3, suffix: "+", label: "Global Companies" },
+              { end: 15, suffix: "+", label: "Production Apps" },
+              { end: 99, suffix: "+", label: "End Users Served" },
             ].map(({ end, suffix, label }, i) => (
               <div
                 key={i}
@@ -172,6 +176,7 @@ const About = () => {
           </motion.div>
         </div>
 
+        {/* Right Side: Tab Controls & Content */}
         <motion.div
           variants={fadeIn("left", 0.3)}
           initial="hidden"
@@ -199,6 +204,7 @@ const About = () => {
                   padding: 0,
                   font: "inherit",
                   cursor: "pointer",
+                  textTransform: "capitalize",
                 }}
               >
                 {item.title}
@@ -206,7 +212,7 @@ const About = () => {
             ))}
           </div>
 
-          {/* Tab content */}
+          {/* Tab Content */}
           <div
             style={{
               display: "flex",

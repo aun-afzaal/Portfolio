@@ -18,29 +18,93 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Muhammad Aun – Software Engineer | Full-Stack Developer</title>
+        {/* Core Primary Meta Tags */}
+        <title>
+          Muhammad Aun – Full-Stack Software Engineer & System Architect
+        </title>
         <meta
           name="description"
-          content="Muhammad Aun is a Software Engineer specialising in React, Next.js, Node.js and NestJS. Building modern, scalable web applications."
+          content="Muhammad Aun is a Full-Stack Software Engineer specializing in scalable microservices, high-concurrency web applications, MERN stack, Next.js, and cloud architecture (AWS/Docker)."
         />
         <meta
           name="keywords"
-          content="Muhammad Aun, Software Engineer, Full-Stack Developer, React, Next.js, Node.js, NestJS, Lahore, Pakistan"
+          content="Muhammad Aun, Full Stack Engineer, Software Architect, React, Next.js, Node.js, NestJS, TypeScript, Microservices, REST APIs, GraphQL, AWS, Docker, CI/CD, Cloud Native, Web Performance Optimization, Lahore Pakistan"
         />
         <meta name="author" content="Muhammad Aun" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://aun.abcodify.com" />
+
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Muhammad Aun – Software Engineer" />
+        <meta property="og:url" content="https://aun.abcodify.com" />
+        <meta
+          property="og:title"
+          content="Muhammad Aun – Full-Stack Software Engineer"
+        />
         <meta
           property="og:description"
-          content="Scalable full-stack applications · SaaS platforms · Real-time systems"
+          content="Architecting resilient microservices, high-throughput SaaS platforms, and modern web applications with Next.js, TypeScript, and AWS."
         />
+        <meta
+          property="og:image"
+          content="https://aun.abcodify.com/og-image.jpg"
+        />
+
+        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Muhammad Aun – Software Engineer" />
+        <meta
+          name="twitter:title"
+          content="Muhammad Aun – Full-Stack Software Engineer"
+        />
         <meta
           name="twitter:description"
-          content="Scalable full-stack applications built with React, Next.js and Node.js"
+          content="Production-grade web apps, cloud-native backend systems, and high-performance user interfaces."
         />
-        <link rel="canonical" href="https://aun.abcodify.com" />
+        <meta
+          name="twitter:image"
+          content="https://aun.abcodify.com/og-image.jpg"
+        />
+
+        {/* JSON-LD Structured Data for Rich Snippets */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Muhammad Aun",
+              jobTitle: "Software Engineer",
+              url: "https://aun.abcodify.com",
+              sameAs: [
+                "https://github.com/aun-afzaal",
+                "https://linkedin.com/in/aun-afzaal",
+              ],
+              knowsAbout: [
+                "Software Engineering",
+                "Full-Stack Development",
+                "System Architecture",
+                "React",
+                "Next.js",
+                "Node.js",
+                "NestJS",
+                "TypeScript",
+                "Docker",
+                "AWS",
+              ],
+              worksFor: {
+                "@type": "Organization",
+                name: "Simulalab",
+              },
+            }),
+          }}
+        />
+
+        <script
+          src="https://platform.linkedin.com/badges/js/profile.js"
+          async
+          defer
+          type="text/javascript"
+        ></script>
       </Head>
 
       {/* ══════════════ HERO ══════════════ */}
@@ -71,7 +135,7 @@ export default function Home() {
               animate="show"
               exit="hidden"
             >
-              <SectionLabel>Software Engineer · Pakistan</SectionLabel>
+              <SectionLabel>Full-Stack Engineer · Cloud & DevOps</SectionLabel>
             </motion.div>
 
             <motion.h1
@@ -80,11 +144,11 @@ export default function Home() {
               animate="show"
               exit="hidden"
               className="h1"
-              style={{ maxWidth: "680px" }}
+              style={{ maxWidth: "720px" }}
             >
-              Building <span className="text-accent">Modern</span>
+              Architecting <span className="text-accent">Scalable</span>
               <br />
-              Web Experiences
+              Enterprise Systems
             </motion.h1>
 
             <motion.p
@@ -92,11 +156,13 @@ export default function Home() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              style={{ maxWidth: "520px", marginBottom: "2.5rem" }}
+              style={{ maxWidth: "560px", marginBottom: "2.5rem" }}
             >
-              I'm Muhammad Aun — a full-stack engineer specialising in React,
-              Next.js, Node.js and NestJS. I build fast, scalable, SEO-optimised
-              web applications and SaaS products that make a real-world impact.
+              I’m Muhammad Aun — a Full-Stack Engineer specializing in modern
+              JavaScript/TypeScript ecosystems (React, Next.js, Node.js,
+              NestJS). I design resilient backend microservices, high-throughput
+              REST/GraphQL APIs, and cloud-native web architectures engineered
+              for performance and reliability.
             </motion.p>
 
             <motion.div
@@ -143,8 +209,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ══════════════ Services ══════════════ */}
-
+      {/* ══════════════ SERVICES ══════════════ */}
       <section id="services" className="overflow-hidden">
         <Services />
       </section>
@@ -201,9 +266,9 @@ export default function Home() {
                     Let's <span className="text-accent">connect.</span>
                   </h2>
                   <p>
-                    Have a project in mind or want to discuss opportunities? I'm
-                    always open to collaborating on interesting challenges and
-                    building impactful products.
+                    Looking to scale an existing system, engineer a cloud-native
+                    SaaS product, or optimize your application's Core Web
+                    Vitals? Let's discuss your tech stack and requirements.
                   </p>
                 </motion.div>
               </div>
@@ -224,8 +289,8 @@ export default function Home() {
                 {[
                   {
                     label: "Email",
-                    value: "codewithaun@gmail.com",
-                    href: "mailto:codewithaun@gmail.com",
+                    value: "dev.aunafzaal@gmail.com",
+                    href: "mailto:dev.aunafzaal@gmail.com",
                   },
                   {
                     label: "Phone",
@@ -264,17 +329,23 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full">
-            {" "}
             <Contact />
           </div>
         </div>
       </section>
 
-      {/* --------Footer-------------- */}
-
-      <section id="footer" className="text-center bg-[var(--navy-600)]">
-        © 2026 Muhammad Aun. All rights reserved.
-      </section>
+      {/* ══════════════ FOOTER ══════════════ */}
+      <footer id="footer" className="text-center bg-[var(--navy-900)]">
+        © 2026{" "}
+        <a
+          href="https://aun.abcodify.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Muhammad Aun
+        </a>
+        . All rights reserved.
+      </footer>
     </>
   );
 }

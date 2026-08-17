@@ -6,37 +6,37 @@ import SectionLabel from "./SectionLabel";
 import ServiceSlider from "./ServiceSlider";
 import { fadeIn } from "../variants";
 
-// ✅ REAL SERVICES DATA (from your experience)
+// ✅ REAL SERVICES DATA (Technical & Value-Oriented)
 export const serviceData = [
   {
     title: "Full-Stack Development",
     description:
-      "Building scalable web applications using React, Next.js, Node.js, NestJS and PostgreSQL with production-grade architecture.",
+      "Engineering resilient, production-grade web applications using React, Next.js, Node.js, and NestJS backed by robust PostgreSQL architecture.",
   },
   {
-    title: "Backend Engineering",
+    title: "Backend & Systems Engineering",
     description:
-      "Designing APIs, authentication systems, WebSockets, Stripe integrations, and scalable backend systems with clean architecture.",
+      "Designing high-concurrency REST & GraphQL APIs, distributed auth pipelines, WebSockets, payment gateways (Stripe), and clean microservices.",
   },
   {
     title: "SaaS Product Development",
     description:
-      "End-to-end SaaS platforms including booking systems, marketplaces, admin dashboards, and multi-tenant systems.",
+      "End-to-end multi-tenant SaaS architecture, complex marketplace solutions, administrative control panels, and real-time state synchronization.",
   },
   {
-    title: "Real-time Systems",
+    title: "Real-Time Infrastructure",
     description:
-      "Live applications using WebSockets, notifications, chat systems, tracking systems, and real-time dashboards.",
+      "Building low-latency event-driven systems using WebSockets, pub/sub messaging, dynamic notifications, live telemetry, and interactive dashboards.",
   },
   {
-    title: "Third-party Integrations",
+    title: "Third-Party Integrations & SDKs",
     description:
-      "Integration of Stripe, AWS S3, Mailgun, PMS systems, authentication providers, and external APIs.",
+      "Seamless integration of payment rails (Stripe), AWS cloud storage, Mailgun, external auth providers, and custom REST API wrappers.",
   },
   {
-    title: "UI Engineering",
+    title: "UI Engineering & Performance",
     description:
-      "Responsive UI development using React, Tailwind CSS, and Framer Motion with modern component architecture.",
+      "Crafting pixel-perfect, accessible UI components with React, Tailwind CSS, and Framer Motion, optimized for Core Web Vitals and SEO.",
   },
 ];
 
@@ -48,10 +48,11 @@ const Services = () => {
 
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-x-8">
-
           {/* LEFT TEXT SECTION */}
           <div className="text-center flex xl:w-[40vw] flex-col lg:text-left mb-4 xl:mb-0">
-          <SectionLabel className="text-capitalize">What i offer</SectionLabel>
+            <SectionLabel className="text-capitalize">
+              Capabilities
+            </SectionLabel>
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"
@@ -59,7 +60,7 @@ const Services = () => {
               exit="hidden"
               className="h2 xl:mt-8"
             >
-              My services <span className="text-accent">.</span>
+              Engineering <span className="text-accent">Solutions.</span>
             </motion.h2>
 
             <motion.p
@@ -69,12 +70,11 @@ const Services = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              I build full-stack digital products including SaaS platforms,
-              marketplaces, real-time systems, and enterprise dashboards.
-              Focused on scalable architecture, performance, and clean engineering
-              using modern web technologies.
+              Architecting full-stack digital products—from multi-tenant SaaS
+              platforms and low-latency real-time apps to enterprise-grade
+              analytics dashboards. Focused on maintainability, high throughput,
+              and clean software architecture.
             </motion.p>
-
           </div>
 
           {/* RIGHT SLIDER */}
@@ -87,7 +87,6 @@ const Services = () => {
           >
             <ServiceSlider />
           </motion.div>
-
         </div>
       </div>
     </div>

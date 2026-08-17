@@ -1,9 +1,13 @@
 import Image from "next/image";
 import { BsArrowRight, BsX } from "react-icons/bs";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProjectPage from "./ProjectPage";
 import { useState } from "react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const workSlides = {
   slides: [
@@ -104,18 +108,18 @@ const workSlides = {
         {
           title: "Motorcycle Stand System",
           path: "https://www.abcodify.com/images/madina-stand.png",
-          link: "/projects/madina-stand",
+          link: "madina-stand",
         },
         {
           title: "Portfolio System",
           path: "https://www.abcodify.com/images/portfolio.png",
-          link: "/projects/portfolio",
+          link: "portfolio",
         },
-        { title: "Glass Calculator", path: "", link: "/projects/glass-calc" },
+        { title: "Glass Calculator", path: "", link: "glass-calc" },
         {
           title: "UsaLottomax Full",
           path: "https://www.abcodify.com/images/usalottomax.png",
-          link: "/projects/usalottomax",
+          link: "usalottomax",
         },
       ],
     },
@@ -129,78 +133,47 @@ const WorkSlider = () => {
     <>
       <div className="w-full">
         <Swiper
-          modules={[Pagination, Autoplay]}
-          spaceBetween={20}
-          // slidesPerView={1}
-          loop
+          modules={[Pagination, Navigation, Autoplay]}
+          // navigation
+          slidesPerView={1}
+          loop={true}
+          observer={true}
+          observeParents={true}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
-          className="w-full sm:h-[520px] h-full md:max-w-[70dvw] mx-auto"
+          className="w-full md:max-w-[80dvw] mx-auto pb-12"
         >
           {workSlides.slides.map((slide, i) => (
-            <SwiperSlide key={i}>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, 1fr)",
-                  gap: "1rem",
-                  height: "100%",
-                }}
-              >
+            <SwiperSlide key={i} className="!h-auto">
+              {/* Force Grid Layout with explicit heights */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 w-full min-h-[480px]">
                 {slide.images.map((image, ii) => (
                   <div
                     key={ii}
-                    className="group work-slide-overlay"
-                    style={{
-                      position: "relative",
-                      borderRadius: "var(--radius-md)",
-                      overflow: "hidden",
-                      height: "220px",
-                      border: "1px solid var(--navy-500)",
-                    }}
+                    className="group relative w-full h-[220px] rounded-md overflow-hidden border border-[var(--navy-500)] bg-black/20"
                   >
                     <Image
                       src={image.path || "/no-image.png"}
                       alt={image.title}
                       fill
+                      sizes="(max-width: 640px) 100vw, 50vw"
                       style={{
                         objectFit: image.path ? "cover" : "contain",
                       }}
+                      priority={i === 0 && ii < 2}
                     />
 
-                    {/* Overlay */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        background:
-                          "linear-gradient(to top, rgba(0,0,0,0.8), transparent)",
-                      }}
-                    />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
 
-                    {/* Button */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        bottom: "1.5rem",
-                        left: "1rem",
-                      }}
-                    >
+                    {/* Button & Title Container */}
+                    <div className="absolute bottom-4 bg-[var(--navy-800)] p-2 left-2 right-4 flex items-center justify-between z-20">
+                      <span className="text-white text-xs font-semibold truncate max-w-[60%]">
+                        {image.title}
+                      </span>
                       <button
                         onClick={() => setOpenModal(image)}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "0.5rem",
-                          color: "white",
-                          fontSize: "0.7rem",
-                          letterSpacing: "0.12em",
-                          fontWeight: 600,
-                          textTransform: "uppercase",
-                          background: "transparent",
-                          border: "none",
-                          cursor: "pointer",
-                        }}
+                        className="flex items-center gap-2 text-white text-[0.7rem] tracking-wider font-semibold uppercase bg-transparent border-none cursor-pointer hover:text-[var(--accent-500)] transition-colors"
                       >
                         VIEW PROJECT <BsArrowRight />
                       </button>
@@ -215,30 +188,14 @@ const WorkSlider = () => {
 
       {/* Modal */}
       {openModal && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.1)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 9999,
-            padding: "1rem",
-          }}
-        >
-          <div
-            className="border-2 rounded-md border-[var(--accent-500)]"
-            style={{
-              width: "100%",
-              maxWidth: "1000px",
-              maxHeight: "90vh",
-              overflowY: "auto",
-              position: "relative",
-            }}
-          >
-            {/* Close Button */}
-
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] p-4">
+          <div className="border-2 rounded-md border-[var(--accent-500)] w-full max-w-[1000px] max-h-[90vh] overflow-y-auto relative bg-[var(--navy-900)]">
+            <button
+              onClick={() => setOpenModal(null)}
+              className="absolute top-4 right-4 text-white text-2xl z-50 hover:text-red-500 transition-colors"
+            >
+              <BsX />
+            </button>
             <ProjectPage slug={openModal?.link} setOpenModal={setOpenModal} />
           </div>
         </div>
