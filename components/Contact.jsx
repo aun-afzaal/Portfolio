@@ -68,7 +68,8 @@ const Contact = () => {
         <motion.h2
             variants={fadeIn("up", 0.2)}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
             className="h2 text-center"
           >
             Contact <span className="text-accent">Form.</span>
@@ -77,7 +78,8 @@ const Contact = () => {
             onSubmit={handleSubmit}
             variants={fadeIn("up", 0.4)}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
             className="flex flex-col gap-6"
           >
             {/* ROW: First + Last Name */}
@@ -125,15 +127,15 @@ const Contact = () => {
               <label className="text-white">Service Needed</label>
 
               <select name="service" className="input" disabled={isLoading}>
-                <option value="" className="text-black">
+                <option value="">
                   Select a service...
                 </option>
-                <option className="text-black">Web Development</option>
-                <option className="text-black">Mobile App</option>
-                <option className="text-black">Cloud & DevOps</option>
-                <option className="text-black">AI & Automation</option>
-                <option className="text-black">UI/UX Design</option>
-                <option className="text-black">Other</option>
+                <option>Web Development</option>
+                <option>Mobile App</option>
+                <option>Cloud & DevOps</option>
+                <option>AI & Automation</option>
+                <option>UI/UX Design</option>
+                <option>Other</option>
               </select>
             </div>
 

@@ -31,12 +31,14 @@ export default function Home() {
           content="Muhammad Aun, Full Stack Engineer, Software Architect, React, Next.js, Node.js, NestJS, TypeScript, Microservices, REST APIs, GraphQL, AWS, Docker, CI/CD, Cloud Native, Web Performance Optimization, Lahore Pakistan"
         />
         <meta name="author" content="Muhammad Aun" />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <link rel="canonical" href="https://aun.abcodify.com" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aun.abcodify.com" />
+        <meta property="og:site_name" content="Muhammad Aun" />
+        <meta property="og:locale" content="en_PK" />
         <meta
           property="og:title"
           content="Muhammad Aun – Full-Stack Software Engineer"
@@ -47,11 +49,14 @@ export default function Home() {
         />
         <meta
           property="og:image"
-          content="https://aun.abcodify.com/og-image.jpg"
+          content="https://aun.abcodify.com/android-chrome-512x512.png"
         />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:image:alt" content="Muhammad Aun favicon" />
 
         {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary" />
         <meta
           name="twitter:title"
           content="Muhammad Aun – Full-Stack Software Engineer"
@@ -62,8 +67,9 @@ export default function Home() {
         />
         <meta
           name="twitter:image"
-          content="https://aun.abcodify.com/og-image.jpg"
+          content="https://aun.abcodify.com/android-chrome-512x512.png"
         />
+        <meta name="twitter:image:alt" content="Muhammad Aun favicon" />
 
         {/* JSON-LD Structured Data for Rich Snippets */}
         <script
@@ -122,7 +128,7 @@ export default function Home() {
           }}
         >
           <div
-            className="container mx-auto"
+            className="hero-content container mx-auto"
             style={{
               paddingTop: "6rem",
               paddingBottom: "4rem",
@@ -252,7 +258,7 @@ export default function Home() {
             style={{ display: "flex", flexDirection: "column", gap: "3rem" }}
             className="xl:flex-row xl:items-start xl:gap-x-16 w-full"
           >
-            <div>
+            <div className="space-y-8">
               {/* Left */}
               <div style={{ flexShrink: 0, maxWidth: "380px" }}>
                 <motion.div

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { Button, Tooltip } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
 import Socials from "../components/Socials";
 
 const Header = () => {
@@ -26,58 +27,38 @@ const Header = () => {
         borderBottom: "1px solid var(--navy-500)",
       }}
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 sm:px-6">
         <div
-          className="lg:flex-row flex-col flex"
+          className="flex flex-col lg:flex-row"
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: "1rem",
-            paddingBlock: "1.25rem",
+            gap: "0.75rem",
+            paddingBlock: "0.75rem",
           }}
         >
           {/* Logo */}
-          <div className="flex text-center justify-between w-full">
-            <Link href="/#home" style={{ flexShrink: 0, marginTop: 15 }}>
+          <div className="flex min-w-0 items-center justify-between gap-3 w-full">
+            <Link href="/#home" style={{ flexShrink: 1, minWidth: 0 }}>
               <Image
                 src="/logo.svg"
-                className="w-[clamp(140px, 18vw, 200px)]"
+                className="w-[clamp(116px,18vw,200px)]"
                 alt="Muhammad Aun – Software Engineer"
                 width={200}
                 height={44}
                 priority
               />
             </Link>
-            <motion.button
-              onClick={handleResumeDownload}
-              className="btn"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              style={{ whiteSpace: "nowrap", gap: "0.5rem" }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              Resume
-            </motion.button>
+            <Tooltip title="Resume">
+              <Button type="primary" shape="round" icon={<DownloadOutlined />} onClick={handleResumeDownload} className="resume-button">
+                <span className="hidden sm:inline">Resume</span>
+              </Button>
+            </Tooltip>
           </div>
 
           {/* Right: Resume + Socials */}
-          <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          <div className="w-full overflow-x-auto pb-1 lg:w-auto lg:overflow-visible" style={{ display: "flex", alignItems: "center" }}>
             {/* Resume button */}
             {/* Socials */}
             <Socials />

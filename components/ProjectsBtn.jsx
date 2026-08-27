@@ -4,7 +4,11 @@ import { HiArrowRight } from "react-icons/hi2";
 const ProjectsBtn = () => {
   const handleClick = (e) => {
     e.preventDefault();
-    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("work")?.scrollIntoView({
+      behavior: reducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
   };
 
   return (

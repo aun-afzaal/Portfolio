@@ -1,11 +1,6 @@
 import Image from "next/image";
 import { FaQuoteLeft } from "react-icons/fa";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { Carousel } from "antd";
 // ✅ ENHANCED TESTIMONIALS WITH RELIABLE AVATAR PLACEHOLDERS
 const testimonialData = [
   {
@@ -53,20 +48,16 @@ const testimonialData = [
 ];
 
 const TestimonialSlider = () => (
-  <Swiper
-    // navigation
-    pagination={{ clickable: true }}
-    modules={[Navigation, Pagination, Autoplay]}
-    spaceBetween={20}
-    slidesPerView={1}
-    loop
-    autoplay={{ delay: 6000, disableOnInteraction: false }}
-    grabCursor
-    autoHeight
-    className="min-h-[400px] h-auto md:mt-24"
+  <Carousel
+    autoplay
+    autoplaySpeed={6000}
+    dots
+    draggable
+    swipeToSlide
+    className="antd-carousel testimonials-slider min-h-[400px] h-auto md:mt-24"
   >
     {testimonialData.map((person, i) => (
-      <SwiperSlide key={i}>
+      <div key={i}>
         <div
           style={{
             display: "flex",
@@ -156,9 +147,9 @@ const TestimonialSlider = () => (
             </p>
           </div>
         </div>
-      </SwiperSlide>
+      </div>
     ))}
-  </Swiper>
+  </Carousel>
 );
 
 export default TestimonialSlider;

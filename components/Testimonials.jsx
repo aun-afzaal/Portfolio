@@ -13,7 +13,8 @@ const Testimonials = () => {
           <motion.h2
             variants={fadeIn("up", 0.2)}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
             exit="hidden"
             className="h2 mb-4 xl:mb-0 w-full"
           >
@@ -25,7 +26,8 @@ const Testimonials = () => {
         <motion.div
           variants={fadeIn("up", 0.4)}
           initial="hidden"
-          animate="show"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
           exit="hidden"
         >
           <TestimonialSlider />

@@ -22,7 +22,6 @@ import {
   SiTypescript,
 } from "react-icons/si";
 
-import Avatar from "./Avatar";
 import SectionLabel from "./SectionLabel";
 import Circles from "./Circles";
 import { fadeIn } from "../variants";
@@ -87,17 +86,6 @@ const About = () => {
   return (
     <div className="bg-[var(--navy-900)] overflow-hidden xl:py-36 py-20 flex items-center w-full relative h-full">
       <Circles />
-      {/* Avatar Image */}
-      <motion.div
-        variants={fadeIn("right", 0.2)}
-        initial="hidden"
-        animate="show"
-        exit="hidden"
-        className="hidden xl:flex absolute bottom-0 -left-[300px]"
-      >
-        <Avatar />
-      </motion.div>
-
       <div
         className="container mx-auto"
         style={{ display: "flex", flexDirection: "column", gap: "3rem" }}

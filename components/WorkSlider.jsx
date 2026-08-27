@@ -1,13 +1,9 @@
 import Image from "next/image";
-import { BsArrowRight, BsX } from "react-icons/bs";
-import { Pagination, Autoplay, Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { BsArrowRight } from "react-icons/bs";
+import { Button, Carousel, Modal } from "antd";
 import ProjectPage from "./ProjectPage";
 import { useState } from "react";
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 
 const workSlides = {
   slides: [
@@ -132,25 +128,15 @@ const WorkSlider = () => {
   return (
     <>
       <div className="w-full">
-        <Swiper
-          modules={[Pagination, Navigation, Autoplay]}
-          // navigation
-          slidesPerView={1}
-          loop={true}
-          observer={true}
-          observeParents={true}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
-          className="w-full md:max-w-[80dvw] mx-auto pb-12"
-        >
+        <Carousel autoplay autoplaySpeed={5000} dots draggable swipeToSlide className="antd-carousel work-slider w-full md:max-w-[80dvw] mx-auto">
           {workSlides.slides.map((slide, i) => (
-            <SwiperSlide key={i} className="!h-auto">
+            <div key={i}>
               {/* Force Grid Layout with explicit heights */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 w-full min-h-[480px]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 p-1 sm:p-4 w-full md:min-h-[480px]">
                 {slide.images.map((image, ii) => (
                   <div
                     key={ii}
-                    className="group relative w-full h-[220px] rounded-md overflow-hidden border border-[var(--navy-500)] bg-black/20"
+                    className="project-card group relative w-full h-[200px] sm:h-[220px] rounded-md overflow-hidden border border-[var(--navy-500)] bg-black/20"
                   >
                     <Image
                       src={image.path || "/no-image.png"}
@@ -167,38 +153,31 @@ const WorkSlider = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
 
                     {/* Button & Title Container */}
-                    <div className="absolute bottom-4 bg-[var(--navy-800)] p-2 left-2 right-4 flex items-center justify-between z-20">
+                    <div className="absolute bottom-3 left-2 right-2 bg-[var(--navy-800)]/95 p-2 flex items-center justify-between gap-2 z-20">
                       <span className="text-white text-xs font-semibold truncate max-w-[60%]">
                         {image.title}
                       </span>
-                      <button
+                      <Button
+                        type="text"
                         onClick={() => setOpenModal(image)}
-                        className="flex items-center gap-2 text-white text-[0.7rem] tracking-wider font-semibold uppercase bg-transparent border-none cursor-pointer hover:text-[var(--accent-500)] transition-colors"
+                        className="!h-auto !bg-white/15 !px-2 !text-white hover:!bg-white/25 hover:!text-white"
                       >
                         VIEW PROJECT <BsArrowRight />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 ))}
               </div>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </Carousel>
       </div>
 
       {/* Modal */}
       {openModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] p-4">
-          <div className="border-2 rounded-md border-[var(--accent-500)] w-full max-w-[1000px] max-h-[90vh] overflow-y-auto relative bg-[var(--navy-900)]">
-            <button
-              onClick={() => setOpenModal(null)}
-              className="absolute top-4 right-4 text-white text-2xl z-50 hover:text-red-500 transition-colors"
-            >
-              <BsX />
-            </button>
+        <Modal open centered footer={null} onCancel={() => setOpenModal(null)} width={1100} className="project-modal">
             <ProjectPage slug={openModal?.link} setOpenModal={setOpenModal} />
-          </div>
-        </div>
+        </Modal>
       )}
     </>
   );

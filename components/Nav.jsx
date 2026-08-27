@@ -24,26 +24,35 @@ const Nav = () => {
   const [active, setActive] = useState("home");
 
   useEffect(() => {
-    const onScroll = () => {
-      const mid = window.scrollY + window.innerHeight * 0.4;
-      for (const id of SECTIONS) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        if (mid >= el.offsetTop && mid < el.offsetTop + el.offsetHeight) {
-          setActive(id);
-          break;
-        }
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    const sections = SECTIONS.map((id) => document.getElementById(id)).filter(Boolean);
+    const hash = window.location.hash.slice(1).toLowerCase();
+    const hashSection = SECTIONS.find(
+      (id) => id === hash || (hash.length >= 3 && id.startsWith(hash))
+    );
+    if (hashSection) setActive(hashSection);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: "-20% 0px -45% 0px", threshold: [0.1, 0.3, 0.6] }
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   const scrollTo = (e, path) => {
     e.preventDefault();
     const id = path.split("#")[1];
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById(id)?.scrollIntoView({
+      behavior: reducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
+    window.history.replaceState(null, "", `/#${id}`);
     setActive(id);
   };
 
@@ -62,12 +71,12 @@ const Nav = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-around",
-          gap: "20px",
+          gap: "0.5rem",
           background: "rgba(5,15,30,0.82)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           borderTop: "1px solid var(--navy-500)",
-          padding: "0.75rem 1.5rem",
+          padding: "0.7rem max(0.75rem, env(safe-area-inset-right)) calc(0.7rem + env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left))",
           fontSize: "1.5rem",
         }}
         className="w-full xl:flex-col xl:justify-center xl:gap-y-8 xl:border-t-0 xl:border xl:border-[var(--navy-500)] xl:rounded-full xl:px-0 xl:py-8 xl:w-16 xl:text-xl"
@@ -89,7 +98,8 @@ const Nav = () => {
                 color: isActive ? "var(--accent-400)" : "var(--white-300)",
                 transition: "color var(--dur-base) var(--ease-out)",
               }}
-              className="group hover:text-accent"
+              aria-current={isActive ? "page" : undefined}
+              className="group hover:text-accent min-w-10 min-h-10"
             >
               {/* Desktop tooltip */}
               <span

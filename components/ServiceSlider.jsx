@@ -10,11 +10,7 @@ import {
   RxArrowTopRight,
 } from "react-icons/rx";
 import { FiDatabase, FiServer } from "react-icons/fi";
-import { FreeMode, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
+import { Card, Carousel } from "antd";
 
 export const serviceData = [
   {
@@ -80,21 +76,20 @@ export const serviceData = [
 ];
 
 const ServiceSlider = () => (
-  <Swiper
-    breakpoints={{
-      320: { slidesPerView: 1, spaceBetween: 15 },
-      640: { slidesPerView: 2, spaceBetween: 15 },
-      1024: { slidesPerView: 2, spaceBetween: 20 },
-    }}
-    // navigation
-    pagination={{ clickable: true }}
-    modules={[FreeMode, Navigation, Pagination]}
-    freeMode
-    className="w-full h-[380px]"
+  <Carousel
+    autoplay
+    autoplaySpeed={5000}
+    dots
+    draggable
+    swipeToSlide
+    slidesToShow={2}
+    slidesToScroll={1}
+    responsive={[{ breakpoint: 768, settings: { slidesToShow: 1 } }]}
+    className="antd-carousel service-slider w-full"
   >
     {serviceData.map((item, i) => (
-      <SwiperSlide key={i} id={item.id}>
-        <div className="service-card group h-[90%] w-full">
+      <div key={i}>
+        <Card bordered={false} className="service-card group mx-2 min-h-[300px]">
           <div className="service-card__icon">
             <item.Icon aria-hidden />
           </div>
@@ -121,10 +116,10 @@ const ServiceSlider = () => (
             </p>
           </div>
           <RxArrowTopRight className="service-card__arrow" aria-hidden />
-        </div>
-      </SwiperSlide>
+        </Card>
+      </div>
     ))}
-  </Swiper>
+  </Carousel>
 );
 
 export default ServiceSlider;

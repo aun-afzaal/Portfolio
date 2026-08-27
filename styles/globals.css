@@ -65,6 +65,7 @@
    ============================================================ */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 /* ============================================================
@@ -103,6 +104,7 @@ html {
   section {
     max-width: 100vw;
     overflow-x: hidden;
+    scroll-margin-top: 5rem;
   }
 
   /* ---------- Typography scale ---------- */
@@ -272,31 +274,71 @@ html {
    ============================================================ */
 .swiper-pagination {
   position: absolute !important;
-  left: 42% !important;
-  transform: translateX(-50%);
-  border: 1px solid white;
-  bottom: 0px !important;
+  left: 0 !important;
+  right: 0 !important;
+  transform: none;
+  border: 1px solid var(--navy-500);
+  bottom: 0 !important;
   background: rgba(5,15,30,0.4) !important;
   padding: 10px 12px;
   border-radius: var(--radius-full);
   backdrop-filter: blur(8px);
   display: flex;
+  justify-content: center;
   gap: 6px;
   width: fit-content !important;
 }
+
+.antd-carousel .slick-dots {
+  position: relative;
+  inset: auto;
+  display: flex !important;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.25rem 0 0;
+}
+
+.antd-carousel .slick-dots li,
+.antd-carousel .slick-dots li button {
+  width: 0.55rem !important;
+  height: 0.55rem !important;
+  margin: 0 !important;
+  border-radius: 999px;
+}
+
+.antd-carousel .slick-dots li button { background: var(--white-300) !important; }
+.antd-carousel .slick-dots li.slick-active button { background: var(--accent-400) !important; }
+
+.resume-button.ant-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  height: 2.75rem;
+}
+
+@media (min-width: 640px) { .resume-button.ant-btn { height: 3.25rem; padding-inline: 1.5rem; } }
+
+.project-modal .ant-modal-content { padding: 0; overflow: hidden; background: var(--navy-900); }
+.project-modal .ant-modal-close { color: var(--white-100); z-index: 2; }
 
 .swiper-pagination-bullet {
   background: var(--navy-500) !important;
   width: 8px;
   height: 8px;
   opacity: 1;
-  border: 1px solid white;
+  border: 1px solid var(--white-300);
   transition: all var(--dur-base) var(--ease-out);
 }
 
 .swiper-pagination-bullet-active {
   background: var(--accent-400) !important;
   transform: scale(1.35);
+}
+
+.swiper-pagination-bullet:focus-visible {
+  outline: 2px solid var(--white-100);
+  outline-offset: 3px;
 }
 
 .swiper-button-next:after,
@@ -315,8 +357,8 @@ html {
    SERVICE CARD COMPONENT
    ============================================================ */
 .service-card {
-  background: var(--navy-700);
-  border: 1px solid var(--navy-500);
+  background: linear-gradient(145deg, rgba(26, 50, 88, 0.82), rgba(9, 20, 37, 0.72));
+  border: 1px solid rgba(200, 216, 240, 0.16);
   border-radius: var(--radius-lg);
   padding: 2rem 1.5rem;
   display: flex;
@@ -327,13 +369,17 @@ html {
   transition:
     border-color var(--dur-base) var(--ease-out),
     box-shadow   var(--dur-base) var(--ease-out),
-    background   var(--dur-base) var(--ease-out);
+    background   var(--dur-base) var(--ease-out),
+    transform    var(--dur-base) var(--ease-out);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
 }
 
 .service-card:hover {
   border-color: var(--accent-400);
   box-shadow: var(--shadow-glow-sm);
   background: var(--navy-600);
+  transform: translateY(-6px) perspective(700px) rotateX(2deg);
 }
 
 .service-card__icon {
@@ -353,6 +399,16 @@ html {
 .service-card:hover .service-card__arrow {
   transform: rotate(45deg);
   color: var(--accent-400);
+}
+
+@media (max-width: 639px) {
+  .service-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .swiper-pagination {
+    padding: 8px 10px;
+  }
 }
 
 /* ============================================================
@@ -424,12 +480,13 @@ html {
    CONTACT INFO CARD
    ============================================================ */
 .contact-card {
-  background: var(--navy-700);
-  border: 1px solid var(--navy-500);
+  background: rgba(18, 34, 64, 0.72);
+  border: 1px solid rgba(200, 216, 240, 0.16);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   transition: border-color var(--dur-base) var(--ease-out),
               box-shadow   var(--dur-base) var(--ease-out);
+  backdrop-filter: blur(14px);
 }
 
 .contact-card:hover {
@@ -456,6 +513,104 @@ html {
   color: var(--accent-400);
 }
 
+select.input {
+  color: var(--white-100);
+}
+
+select.input option {
+  background: var(--navy-700);
+  color: var(--white-100);
+}
+
+.project-card {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+
+.project-card:hover {
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.34), 0 0 28px var(--accent-glow-sm);
+  transform: translateY(-5px) perspective(800px) rotateX(1.5deg);
+}
+
+.project-gallery__main {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: clamp(240px, 38vw, 400px);
+  overflow: hidden;
+  border: 1px solid rgba(200, 216, 240, 0.2);
+  border-radius: var(--radius-lg);
+  background: var(--navy-950);
+  cursor: zoom-in;
+  box-shadow: var(--shadow-card);
+}
+
+.project-gallery__expand {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: var(--white-100);
+  background: rgba(2, 11, 24, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.project-gallery__thumbs {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.project-gallery__thumbs button {
+  position: relative;
+  flex: 0 0 5.5rem;
+  height: 4rem;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  opacity: 0.65;
+  transition: opacity var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.project-gallery__thumbs button.is-active,
+.project-gallery__thumbs button:hover {
+  border-color: var(--accent-400);
+  opacity: 1;
+}
+
+.project-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  border: 0;
+  background: rgba(2, 11, 24, 0.92);
+  cursor: zoom-out;
+}
+
+.project-lightbox__image {
+  position: relative;
+  display: block;
+  width: min(1100px, 94vw);
+  height: min(78vh, 760px);
+}
+
+.project-lightbox__close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 2.5rem;
+  color: var(--white-100);
+}
+
 /* ============================================================
    MISC UTILITY
    ============================================================ */
@@ -479,4 +634,25 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-400);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-content {
+    padding-top: 8rem !important;
+  }
 }

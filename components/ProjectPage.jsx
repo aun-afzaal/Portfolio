@@ -1,10 +1,8 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useState } from "react";
 
-import Avatar from "./Avatar";
-import { fadeIn } from "../variants";
-import { BsX } from "react-icons/bs";
+import { BsArrowsFullscreen, BsX } from "react-icons/bs";
 const PROJECTS = [
   {
     id: 0,
@@ -63,6 +61,10 @@ const PROJECTS = [
     tech: "react",
     large: false,
     img: "https://www.abcodify.com/images/trumeid.png",
+    images: [
+      "https://www.abcodify.com/images/trumeid.png",
+      "https://www.abcodify.com/images/trumeid-dashboard.png",
+    ],
     tag: "React · KYC",
     title: "Trumeid — KYC Verification",
     desc: "Mobile-responsive KYC platform for document validation and face recognition using Sumsub. Users verify identity and authenticity through the platform.",
@@ -184,6 +186,10 @@ const PROJECTS = [
     tech: "react",
     large: false,
     img: "https://www.abcodify.com/images/usalottomax-admin.png",
+    images: [
+      "https://www.abcodify.com/images/usalottomax-admin.png",
+      "https://www.abcodify.com/images/usalottomax.png",
+    ],
     tag: "Refine.dev · Admin",
     title: "Admin Dashboard — Lottomax",
     desc: "Admin panel to view and create draws for UsaLottomax. Complete CRUD for draw management built with Refine.dev.",
@@ -859,6 +865,8 @@ const PROJECTS = [
 
 export default function ProjectPage({ slug, setOpenModal }) {
   const router = useRouter();
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   if (!router.isReady) return null;
 
@@ -867,6 +875,9 @@ export default function ProjectPage({ slug, setOpenModal }) {
   if (!project) {
     return <div className="text-white p-10">Project not found</div>;
   }
+
+  const images = (project.images || [project.img]).filter(Boolean);
+  const activeImage = selectedImage || images[0];
 
   return (
     <div className="bg-[var(--navy-800)] overflow-hidden relative max-h-[90vh] overflow-y-auto">
@@ -884,26 +895,12 @@ export default function ProjectPage({ slug, setOpenModal }) {
           <BsX />
         </button>
       <div className="py-20 flex items-center w-full relative h-full">
-        {/* Avatar */}
-        <motion.div
-          variants={fadeIn("right", 0.2)}
-          initial="hidden"
-          animate="show"
-          className="hidden xl:flex absolute bottom-0 -right-[300px]"
-        >
-          {/* <Avatar /> */}
-        </motion.div>
         <div className="container mx-auto flex flex-col xl:flex-row gap-10 items-center">
           {/* LEFT CONTENT */}
           <div className="flex-1">
-            <motion.h1
-              variants={fadeIn("right", 0.2)}
-              initial="hidden"
-              animate="show"
-              className="text-4xl font-bold mb-6"
-            >
+            <h1 className="text-4xl font-bold mb-6">
               {project.title}
-            </motion.h1>
+            </h1>
 
             <p className="text-white/70 mb-6">{project.desc}</p>
 
@@ -942,19 +939,56 @@ export default function ProjectPage({ slug, setOpenModal }) {
             </div>
           </div>
 
-          {/* RIGHT IMAGE */}
-          {project.img && (
-            <div className="relative w-full max-w-xl h-[400px]">
-              <Image
-                src={project.img}
-                alt={project.title}
-                fill
-                className="object-cover rounded-xl"
-              />
+          {/* Project gallery: each project may provide an images array. */}
+          {images.length > 0 && (
+            <div className="project-gallery w-full max-w-xl">
+              <button
+                type="button"
+                onClick={() => setLightboxImage(activeImage)}
+                className="project-gallery__main"
+                aria-label={`Open a larger preview of ${project.title}`}
+              >
+                <Image
+                  src={activeImage}
+                  alt={`${project.title} preview`}
+                  fill
+                  sizes="(max-width: 1280px) 100vw, 576px"
+                  className="object-cover"
+                />
+                <span className="project-gallery__expand"><BsArrowsFullscreen aria-hidden /></span>
+              </button>
+              {images.length > 1 && (
+                <div className="project-gallery__thumbs" aria-label="Project image previews">
+                  {images.map((image, index) => (
+                    <button
+                      type="button"
+                      key={image}
+                      onClick={() => setSelectedImage(image)}
+                      className={image === activeImage ? "is-active" : ""}
+                      aria-label={`Show image ${index + 1} of ${images.length}`}
+                    >
+                      <Image src={image} alt="" fill sizes="112px" className="object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>
       </div>
+      {lightboxImage && (
+        <button
+          type="button"
+          className="project-lightbox"
+          onClick={() => setLightboxImage(null)}
+          aria-label="Close image preview"
+        >
+          <span className="project-lightbox__image">
+            <Image src={lightboxImage} alt={`${project.title} enlarged preview`} fill sizes="95vw" className="object-contain" />
+          </span>
+          <BsX className="project-lightbox__close" aria-hidden />
+        </button>
+      )}
     </div>
   );
 }
