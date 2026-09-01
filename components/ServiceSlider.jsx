@@ -10,7 +10,7 @@ import {
   RxArrowTopRight,
 } from "react-icons/rx";
 import { FiDatabase, FiServer } from "react-icons/fi";
-import { Card, Carousel } from "antd";
+import { Card, Carousel, Grid } from "antd";
 
 export const serviceData = [
   {
@@ -75,51 +75,59 @@ export const serviceData = [
   },
 ];
 
-const ServiceSlider = () => (
-  <Carousel
-    autoplay
-    autoplaySpeed={5000}
-    dots
-    draggable
-    swipeToSlide
-    slidesToShow={2}
-    slidesToScroll={1}
-    responsive={[{ breakpoint: 768, settings: { slidesToShow: 1 } }]}
-    className="antd-carousel service-slider w-full"
-  >
-    {serviceData.map((item, i) => (
-      <div key={i}>
-        <Card bordered={false} className="service-card group mx-2 min-h-[300px]">
-          <div className="service-card__icon">
-            <item.Icon aria-hidden />
-          </div>
-          <div style={{ flex: 1 }}>
-            <p
-              style={{
-                fontSize: "1rem",
-                fontWeight: 600,
-                color: "var(--white-100)",
-                marginBottom: "0.5rem",
-                lineHeight: 1.4,
-              }}
-            >
-              {item.title}
-            </p>
-            <p
-              style={{
-                fontSize: "0.875rem",
-                lineHeight: 1.7,
-                color: "var(--white-300)",
-              }}
-            >
-              {item.description}
-            </p>
-          </div>
-          <RxArrowTopRight className="service-card__arrow" aria-hidden />
-        </Card>
-      </div>
-    ))}
-  </Carousel>
-);
+const ServiceSlider = () => {
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+
+  const slidesToShow = screens.md ? 2 : 1;
+  return (
+    <Carousel
+      autoplay
+      autoplaySpeed={5000}
+      dots
+      draggable
+      swipeToSlide
+      slidesToShow={slidesToShow}
+      slidesToScroll={1}
+      className="antd-carousel service-slider w-full"
+    >
+      {serviceData.map((item, i) => (
+        <div key={i}>
+          <Card
+            bordered={false}
+            className="service-card group mx-2 h-[350px]"
+          >
+            <div className="service-card__icon">
+              <item.Icon aria-hidden />
+            </div>
+            <div style={{ flex: 1 }}>
+              <p
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: 600,
+                  color: "var(--white-100)",
+                  marginBottom: "0.5rem",
+                  lineHeight: 1.4,
+                }}
+              >
+                {item.title}
+              </p>
+              <p
+                style={{
+                  fontSize: "0.875rem",
+                  lineHeight: 1.7,
+                  color: "var(--white-300)",
+                }}
+              >
+                {item.description}
+              </p>
+            </div>
+            <RxArrowTopRight className="service-card__arrow" aria-hidden />
+          </Card>
+        </div>
+      ))}
+    </Carousel>
+  );
+};
 
 export default ServiceSlider;

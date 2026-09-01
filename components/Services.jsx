@@ -6,40 +6,6 @@ import SectionLabel from "./SectionLabel";
 import ServiceSlider from "./ServiceSlider";
 import { fadeIn } from "../variants";
 
-// ✅ REAL SERVICES DATA (Technical & Value-Oriented)
-export const serviceData = [
-  {
-    title: "Full-Stack Development",
-    description:
-      "Engineering resilient, production-grade web applications using React, Next.js, Node.js, and NestJS backed by robust PostgreSQL architecture.",
-  },
-  {
-    title: "Backend & Systems Engineering",
-    description:
-      "Designing high-concurrency REST & GraphQL APIs, distributed auth pipelines, WebSockets, payment gateways (Stripe), and clean microservices.",
-  },
-  {
-    title: "SaaS Product Development",
-    description:
-      "End-to-end multi-tenant SaaS architecture, complex marketplace solutions, administrative control panels, and real-time state synchronization.",
-  },
-  {
-    title: "Real-Time Infrastructure",
-    description:
-      "Building low-latency event-driven systems using WebSockets, pub/sub messaging, dynamic notifications, live telemetry, and interactive dashboards.",
-  },
-  {
-    title: "Third-Party Integrations & SDKs",
-    description:
-      "Seamless integration of payment rails (Stripe), AWS cloud storage, Mailgun, external auth providers, and custom REST API wrappers.",
-  },
-  {
-    title: "UI Engineering & Performance",
-    description:
-      "Crafting pixel-perfect, accessible UI components with React, Tailwind CSS, and Framer Motion, optimized for Core Web Vitals and SEO.",
-  },
-];
-
 const Services = () => {
   return (
     <div className="bg-[var(--navy-800)] xl:py-36 py-20 flex items-center w-full relative h-full">
